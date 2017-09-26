@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>시 작성</title>
+        <meta charset="utf-8">
+        <style media = "screen" type="text/css">
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+                background-color:#c1c1d9;
+            }
+            
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+            }
+            
+            header{
+                width:100%;
+                height:6rem;
+                background-color:#7070a5;
+            }
+            
+            #writePoemCover{
+                width:55rem;
+                height:38rem;
+                background-color:white;
+                margin:0 auto;
+                margin-top:2rem;
+            }
+            
+            h1{
+                color:#6e6fa5;
+                font-weight:normal;
+                font-size:1.5rem;
+                border-bottom:1px solid #c6c6c6;
+                height:5rem;
+                padding-left:2rem;
+                padding-top:1.4rem;
+            }
+            
+            input[type=text]{
+                display:block;
+                border-bottom:1px solid #c6c6c6;
+                width:90%;
+                margin:0 auto;
+                height:2.2rem;
+                margin-top:1rem;
+            }
+            
+            #writeBox{
+                height:22rem;
+                padding-bottom:20rem;
+            }
+            
+            #writeBtnCover{
+                text-align: center;
+            }
+            
+            .writeBtns{
+                display:inline-block;
+                width:44%;
+                height:2.7rem;
+                background-color:#6e6fa5;
+                margin:0.3rem;
+                margin-top:2rem;
+                vertical-align: top;
+                color:white;
+                letter-spacing: 0.5px;
+                padding-top:0.6rem;
+            }
+            
+            .writeBtns:nth-of-type(2){
+                background-color:white;
+                color:#6e6fa5;
+                border:1px solid #c6c6c6;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        <div id = "writePoemCover">
+            <h1>회원가입</h1>
+            <input type = "text" placeholder = "제목">
+            <input type = "text" id = "writeBox" placeholder="내용">
+            <!-- 키 엔터로 따로 처리해줘야댐 -->
+            <div id = "writeBtnCover">
+                <div class = "writeBtns">
+                    취소
+                </div>
+                <div class = "writeBtns">
+                    작성
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

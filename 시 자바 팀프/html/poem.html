@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <title>Poem</title>
+        <meta charset="utf-8">
+        <style media="screen" type="text/css">
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+                background-color:#c1c1d9;
+            }
+            
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+            }
+            
+            header{
+                width:100%;
+                height:6rem;
+                background-color:#7070a5;
+            }
+            
+            input[type=text]{
+                width:54rem;
+                height:3rem;
+                background-color:transparent;
+                border:1.5px solid darkgray;
+                border-radius: 2px;
+                color:white;
+                padding-left:1.5rem;
+                margin-left:10rem;
+                margin-top:1.6rem;
+                vertical-align: top;
+            }
+            
+            input::placeholder{
+                color:white;
+                letter-spacing: 0.5px;
+            }
+            
+            ul{
+                display:inline-block;
+                vertical-align: top;
+                margin-left:4rem;
+                margin-top:2.2rem;
+            }
+            
+            ul li{
+                display:inline-block;
+                padding-left:1.5rem;
+            }
+            
+            ul li a{
+                color:white;
+                cursor:pointer;
+            }
+            
+            #poemCover{
+                width:76rem;
+                height:38rem;
+                background-color:white;
+                margin:0 auto;
+                margin-top:2rem;
+            }
+            
+            h1{
+                color:#6e6fa5;
+                font-weight:normal;
+                font-size:1.5rem;
+                border-bottom:1px solid #c6c6c6;
+                height:5rem;
+                padding-left:2rem;
+                padding-top:1.4rem;
+            }
+            
+            h2{
+                color:#6e6fa5;
+                font-weight:normal;
+                font-size:1rem;
+                padding-left:2rem;
+                border-bottom:1px solid #c6c6c6;
+                height:4rem;
+                padding-top:1.2rem;
+            }
+            
+            #poemSpace{
+                width:100%;
+                height:22rem;
+                border-bottom:1px solid #c6c6c6;
+            }
+            
+            p{
+                color:#6e6fa5;
+                font-size:0.95rem;
+                padding-top:3rem;
+                line-height:1.7;
+                padding-left:2rem;
+            }
+            
+            #btnCover{
+                text-align: center;
+            }
+            
+            #btnCover .poemBtns{
+                width:15rem;
+                height:3rem;
+                background-color:#6e6fa5;
+                display:inline-block;
+                margin:1rem;
+                margin-top:2rem;
+                color:white;
+                vertical-align: top;
+                letter-spacing: 0.5px;
+                padding-top:0.7rem;
+                cursor:pointer;
+                
+            }
+            
+            #listBtn{
+                background-color:white !important;
+                border:1px solid #c6c6c6;
+                color:#6e6fa5 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <input type="text" placeholder="검색어를 입력하세요">
+            <ul>
+                <li><a>메인</a></li>
+                <li><a>마이페이지</a></li>
+                <li><a>로그아웃</a></li>
+            </ul>
+        </header>
+        <div id = "poemCover">
+            <h1>용서하지 않는 방법</h1>
+            <h2>잉여인간</h2>
+            <div id = "poemSpace">
+                <p>
+                    내가 용서받지 않는 방법<br>
+                    그리고 당신이 용서받지 않는 방법
+                </p>
+                <p>
+                    내가 사랑받지 않는 방법<br>
+                    그리고 당신이 사랑받지 않는 방법
+                </p>
+                <p>
+                    당신이 잃지 않는 방법<br>
+                    나를 잃지 않는 방법
+                </p>
+            </div>
+            <div id = "btnCover">
+                <div class = "poemBtns">
+                    이전
+                </div>
+                <div class = "poemBtns" id = "listBtn">
+                    목록
+                </div>
+                <div class = "poemBtns">
+                    다음
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

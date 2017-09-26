@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <title>퍼블리쉬 북</title>
+        <meta charset="utf-8">
+        <style media="screen" type="text/css">
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+                background-color:#c1c1d9;
+            }
+            
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+            }
+            
+            header{
+                width:100%;
+                height:6rem;
+                background-color:#7070a5;
+            }
+            
+            #poemMakeCover{
+                width:55rem;
+                height:35rem;
+                background-color:white;
+                margin:0 auto;
+                margin-top:3rem;
+            }
+            
+            h1{
+                color:#6e6fa5;
+                font-weight:normal;
+                font-size:1.5rem;
+                border-bottom:1px solid #c6c6c6;
+                height:5rem;
+                padding-left:2rem;
+                padding-top:1.4rem;
+            }
+            
+            input[type=text]{
+                display:block;
+                width:90%;
+                height:2.5rem;
+                border-bottom:1px solid #c6c6c6;
+                margin:0 auto;
+                padding-left:0.5rem;
+                margin-top:1rem;
+            }
+            
+            #publishCover{
+                width:90%;
+                height:16rem;
+                margin:0 auto;
+                margin-top:2rem;
+            }
+            
+            #poemCover{
+                display:inline-block;
+                vertical-align: top;
+                width:13rem;
+                height:100%;
+                border:1px solid #c6c6c6;
+            }
+            
+            #poemTitle{
+                display:inline-block;
+                vertical-align: top;
+                width:35rem;
+                height:100%;
+                margin-left:1.1rem;
+            }
+            
+            #poemPic{
+                width:100%;
+                height:85%;
+                border-bottom:1px solid #c6c6c6;
+            }
+            
+            #poemName{
+                width:100%;
+                height:15%;
+                color:#505050;
+                font-size:0.9rem;
+                text-align: center;
+                padding-top:10px;
+                letter-spacing: 0.5px;
+            }
+            
+            .poemTitles{
+                width:100%;
+                height:25%;
+                border-bottom:1px solid #c6c6c6;
+                color:#525252;
+                padding-left:1.5rem;
+                padding-top:1.3rem;
+            }
+            
+            .poemTitles:nth-of-type(1){
+                border-top:1px solid #c6c6c6;
+            }
+            
+            .poemTitles:nth-of-type(2){
+                background-color:#6e6fa5;
+                color:white;
+            }
+            
+            #publishBtnCover{
+                text-align: center;
+            }
+            
+            .publishBtns{
+                width:43.5%;
+                display:inline-block;
+                height:2.7rem;
+                background-color:#6e6fa5;
+                color:white;
+                margin:0.55rem;
+                margin-top:2.7rem;
+                padding-top:0.6rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .publishBtns:nth-of-type(2){
+                background-color:white;
+                border:1px solid #c6c6c6;
+                color: #525252;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        <div id = "poemMakeCover">
+            <h1>시집 제작하기</h1>
+            <input type = "text" placeholder="제목">
+            
+            <div id = "publishCover">
+                <div id = "poemCover">
+                    <div id = "poemPic">
+                        
+                    </div>
+                    <div id = "poemName">
+                        표지
+                    </div>
+                </div>
+                <div id = "poemTitle">
+                    <div class = "poemTitles">
+                        제목
+                    </div>
+                    <div class = "poemTitles">
+                        제목
+                    </div>
+                    <div class = "poemTitles">
+                        제목
+                    </div>
+                    <div class = "poemTitles">
+                        제목
+                    </div>
+                </div>
+            </div>
+            
+            <div id = "publishBtnCover">
+                <div class ="publishBtns">
+                    취소
+                </div>
+                <div class ="publishBtns">
+                    제작
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
