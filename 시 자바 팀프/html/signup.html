@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <title>회원가입</title>
+        <meta charset="utf-8">
+        <style media="screen" type="text/css">
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+                background-color:#c1c1d9;
+            }
+            
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+            }
+            
+            header{
+                width:100%;
+                height:6rem;
+                background-color:#9999bf;
+            }
+            
+            #signupForm{
+                width:45rem;
+                height:30rem;
+                background-color:white;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+            }
+            
+            h1{
+                border-bottom:1px solid darkgray;
+                color:#6e6fa5;
+                font-size:1.4rem;
+                font-weight:normal;
+                height:4.5rem;
+                padding-top:1.2rem;
+                padding-left:1.5rem;
+            }
+            
+            input{
+                border-bottom:1px solid darkgray;
+                width:60%;
+                height:3rem;
+                margin-bottom:1rem;
+                padding-left:1rem;
+                color:#505050;
+            }
+            
+            input[type=text]{
+                display:inline-block;
+                position:relative;
+                top:2rem;
+                margin-left:2rem;
+            }
+            
+            .repeatBtn{
+                width:7rem;
+                height:2.5rem;
+                background-color:#6e6fa5;
+                display:inline-block;
+                position:relative;
+                top:2.4rem;
+                margin-left:1rem;
+                text-align: center;
+                color:white;
+                font-size:0.9rem;
+                padding-top:0.6rem;
+                cursor:pointer;
+            }
+            
+            .repeatBtn:nth-of-type(2){
+                background-color:white;
+                border:1px solid #c6c6c6;
+                color:#505050;
+            }
+            
+            input[type=password]{
+                width:91.1%;
+                display:block;
+                margin:0 auto;
+                margin-top:0.7rem;
+            }
+            
+            #pwd{
+                margin-top:2rem;
+            }
+            
+            #btnCover{
+                text-align: center;
+            }
+            
+            .clickBtns{
+                width:44%;
+                display:inline-block;
+                height:3rem;
+                background-color:#6e6fa5;
+                margin:0.5rem;
+                margin-top:3rem;
+                color:white;
+                letter-spacing: 0.5px;
+                padding-top:0.8rem;
+                cursor:pointer;
+            }
+            
+            .clickBtns:nth-of-type(2){
+                background-color:white;
+                border:1px solid #c6c6c6;
+                color:#505050;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        <div id = "signupForm">
+            <h1>회원가입</h1>
+            <input type="text" placeholder="아이디">
+            <div class = "repeatBtn">
+                중복확인
+            </div>
+            <input type="text" placeholder="필명">
+            <div class = "repeatBtn">
+                중복확인
+            </div>
+            
+            <input type = "password" placeholder="비밀번호" id ="pwd">
+            <input type = "password" placeholder="비밀번호 확인">
+            
+            
+            <div id = "btnCover">
+                <div class="clickBtns">
+                    취소
+                </div>
+                <div class="clickBtns">
+                    가입
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
