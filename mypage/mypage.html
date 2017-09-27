@@ -1,0 +1,366 @@
+<html>
+    <head>
+        <title>마이페이지</title>
+        <meta charset="utf-8">
+        <style media="screen" type="text/css">
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+                background-color:#c1c1d9;
+            }
+            
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+            }
+            
+            header{
+                width:100%;
+                height:6rem;
+                background-color:#7070a5;
+            }
+            
+            input[type=text]{
+                width:54rem;
+                height:3rem;
+                background-color:transparent;
+                border:1.5px solid darkgray;
+                border-radius: 2px;
+                color:white;
+                padding-left:1.5rem;
+                margin-left:10rem;
+                margin-top:1.6rem;
+                vertical-align: top;
+            }
+            
+            input::placeholder{
+                color:white;
+                letter-spacing: 0.5px;
+            }
+            
+            ul{
+                display:inline-block;
+                vertical-align: top;
+                margin-left:4rem;
+                margin-top:2.2rem;
+            }
+            
+            ul li{
+                display:inline-block;
+                padding-left:1.5rem;
+            }
+            
+            ul li a{
+                color:white;
+                cursor:pointer;
+            }
+            
+            #myForm{
+                width:76rem;
+                height:17rem;
+                background-color:#9999bf;
+                margin:0 auto;
+                margin-top:2rem;
+            }
+            
+            #formBox{
+                width:13rem;
+                height:13rem;
+                display:inline-block;
+                vertical-align: top;
+                background-color:white;
+                margin-left:2rem;
+                margin-top:2rem;
+            }
+            
+            #nicknameBox{
+                display:inline-block;
+                vertical-align: top;
+                width: 56rem;
+                height:13rem;
+                margin-top:2rem;
+                margin-left:2rem;
+            }
+            
+            .nicknames{
+                width:100%;
+                height:50%;
+                border-top:1px solid white;
+                border-bottom:1px solid white;
+                
+                color:white;
+                padding-left:1.5rem;
+                font-size:1.3rem;
+                padding-top:2.1rem;
+                font-weight:lighter;
+            }
+            
+            .nicknames:nth-of-type(2){
+                border-top:0;
+            }
+            
+            #poemCover{
+                width:76rem;
+                height:37rem;
+                margin:0 auto;
+                background-color:white;
+                margin-top:2rem;
+            }
+            
+            h1{
+                color:#6e6fa5;
+                font-weight:normal;
+                font-size:1.5rem;
+                border-bottom:1px solid #c6c6c6;
+                height:5rem;
+                padding-left:2rem;
+                padding-top:1.4rem;
+            }
+            
+            .poemBtn{
+                width:90%;
+                height:3.2rem;
+                background-color:#6e6fa5;
+                color:white;
+                text-align: center;
+                letter-spacing: 0.5px;
+                padding-top:0.9rem;
+                margin:0 auto;
+                margin-top:2rem;
+            }
+            
+            .poemTitles{
+                width:90%;
+                margin:0 auto;
+                height:3.5rem;
+                border-bottom:1px solid #c6c6c6;
+                color:#525252;
+                padding-left:2rem;
+                padding-top:1rem;
+            }
+            
+            #firstTitle{
+                margin-top:2.5rem;
+                border-top:1px solid #c6c6c6;
+            }
+            
+            .poemMore{
+                width:90%;
+                height:3rem;
+                margin:0 auto;
+                text-align: center;
+                border:1px solid #c6c6c6;
+                margin-top:2rem;
+                color:#525252;
+                padding-top:0.7rem;
+            }
+            
+            #book{
+                width:76rem;
+                height:50rem;
+                background-color:white;
+                margin:0 auto;
+                margin-top:2rem;
+            }
+            
+            #bookForm{
+                width:91%;
+                height:31rem;
+                margin:0 auto;
+                margin-top:2rem;
+                text-align: center;
+            }
+            
+            .books{
+                width:49%;
+                height:50%;
+                display:inline-block;
+                margin:3px;
+            }
+            
+            .bookPic{
+                width:14rem;
+                height:100%;
+                border:1px solid #c6c6c6;
+                display:inline-block;
+                vertical-align: top;
+            }
+            
+            .picEx{
+                display:inline-block;
+                vertical-align: top;
+                width:19.5rem;
+                height:100%;
+            }
+            
+            .threePics{
+                width:100%;
+                height:calc(100% / 3);
+                border-bottom:1px solid #c6c6c6;
+                font-size:1.1rem;
+                color:#525252;
+                letter-spacing: 0.5px;
+                text-align: left;
+                padding-left:1rem;
+                padding-top:1.6rem;
+            }
+            
+            .threePics:nth-of-type(1){
+                border-top:1px solid #c6c6c6;
+            }
+            
+            .threeBoxes{
+                width:60%;
+                height:100%;
+                border:1px solid #c6c6c6;
+                margin:0 auto;
+                margin-top:-0.75rem;
+            }
+            
+            footer{
+                height:3rem;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <input type="text" placeholder="검색어를 입력하세요">
+            <ul>
+                <li><a>메인</a></li>
+                <li><a>마이페이지</a></li>
+                <li><a>로그아웃</a></li>
+            </ul>
+        </header>
+        
+        <div id = "myForm">
+            <div id = "formBox">
+                
+            </div>
+            <div id = "nicknameBox">
+                <div class = "nicknames">
+                    필명
+                </div>
+                <div class = "nicknames">
+                    jung22337@naver.com
+                </div>
+            </div>
+        </div>
+        
+        <div id = "poemCover">
+            <h1>시</h1>
+            <div class = "poemBtn">
+                새로운 시 쓰기
+            </div>
+            <div class = "poemTitles" id = "firstTitle">
+                제목
+            </div>
+            <div class = "poemTitles">
+                제목
+            </div>
+            <div class = "poemTitles">
+                제목
+            </div>
+            <div class = "poemTitles">
+                제목
+            </div>
+            <div class = "poemTitles">
+                제목
+            </div>
+            <div class = "poemMore">
+                더 보기
+            </div>
+        </div>
+        
+        <div id = "book">
+            <h1>시</h1>
+            <div class = "poemBtn">
+                새로운 시집 만들기
+            </div>
+            <div id = "bookForm">
+                <div class = "books">
+                    <div class = "bookPic">
+                        
+                    </div>
+                    <div class = "picEx">
+                        <div class="threePics">
+                            제목
+                        </div>
+                        <div class="threePics">
+                            작성자
+                        </div>
+                        <div class="threePics">
+                            <div class = "threeBoxes">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "books">
+                    <div class = "bookPic">
+                        
+                    </div>
+                    <div class = "picEx">
+                        <div class="threePics">
+                            제목
+                        </div>
+                        <div class="threePics">
+                            작성자
+                        </div>
+                        <div class="threePics">
+                            <div class = "threeBoxes">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "books">
+                    <div class = "bookPic">
+                        
+                    </div>
+                    <div class = "picEx">
+                        <div class="threePics">
+                            제목
+                        </div>
+                        <div class="threePics">
+                            작성자
+                        </div>
+                        <div class="threePics">
+                            <div class = "threeBoxes">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "books">
+                    <div class = "bookPic">
+                        
+                    </div>
+                    <div class = "picEx">
+                        <div class="threePics">
+                            제목
+                        </div>
+                        <div class="threePics">
+                            작성자
+                        </div>
+                        <div class="threePics">
+                            <div class = "threeBoxes">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "poemMore">
+                더 보기
+            </div>
+        </div>
+        
+        <footer>
+            
+        </footer>
+    </body>
+</html>
