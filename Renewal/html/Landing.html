@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>랜딩페이지</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+        <style media="screen" type="text/css">
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+                
+                background-image: url(../imgs/back.jpg);
+                background-attachment: fixed;
+                background-size:cover;
+            }
+            
+            *{
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+                box-sizing:border-box;
+            }
+            
+            #coverLanding{
+                width:100%;
+                height:100%;
+                position:absolute;
+                background-color:rgba(0,0,0,0.6);
+            }
+            
+            nav{
+                width:100%;
+                height:6rem;
+            }
+            
+            nav #landingLogo{
+                color:white;
+                font-family: 'poiret one';
+                font-size:3rem;
+                letter-spacing: 3px;
+                margin-left:5rem;
+                margin-top:2.5rem;
+                font-weight:bold;
+            }
+            
+            nav ul{
+                position:absolute;
+                right:5rem;
+                top:3.25rem;
+            }
+            
+            nav ul li{
+                display:inline-block;
+                padding-left:2.6rem;
+                padding-top:0.4rem;
+                width:8.3rem;
+                height:2.35rem;
+                cursor: pointer;
+                margin-left:0.5rem;
+            }
+            
+            nav ul li:nth-of-type(2){
+                margin-right:1.5rem;
+            }
+            
+            nav ul li:nth-of-type(3){
+                background-color: #F4586D;
+                border-radius: 6rem;
+            }
+            nav ul li a{
+                color:white;
+                font-size:1rem;
+                font-family:'nanumsquare';
+                letter-spacing: 1px;
+                font-weight:bold;
+            }
+            
+            /**/
+            
+            h1{
+                color:white;
+                font-family:'nanumsquare';
+                font-weight:normal;
+                text-align: center;
+                font-size:4rem;
+                margin-top:9rem;
+                font-weight:lighter;
+                
+                animation-name:titleOpa1;
+                animation-duration:1.5s;
+                animation-fill-mode: forwards;
+            }
+            
+            h2{
+                font-size:1.3rem;
+                color:white;
+                font-family: 'nanumsquare';
+                font-weight:lighter;
+                text-align: center;
+                margin-top:1rem;
+                opacity: 0;
+                
+                animation-name:titleOpa2;
+                animation-delay: 1.5s;
+                animation-duration:2.5s;
+                animation-fill-mode: forwards;
+            }
+            
+            @keyframes titleOpa1{
+                from{
+                    opacity: 0;
+                }
+                
+                to{
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes titleOpa2{
+                from{
+                    opacity:0;
+                }
+                
+                to{
+                    opacity:1;
+                    letter-spacing: 1.5px;
+                }
+            }
+            
+            #toDownloadApp{
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "coverLanding">
+            <nav>
+                <div id = "landingLogo">
+                    Poem
+                </div>
+                <ul>
+                    <li><a>DOWNLOAD</a></li>
+                    <li><a>REGISTER</a></li>
+                    <li><a>LOGIN</a></li>
+                </ul>
+            </nav>
+            
+            <h1>시.</h1>
+            <h2>글로 아름다움을 표현하다</h2>
+            
+            <div id = "toDownloadApp">
+                
+            </div>
+        </div>
+    </body>
+</html>
