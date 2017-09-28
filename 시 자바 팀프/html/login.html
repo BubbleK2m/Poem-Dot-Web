@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>로그인</title>
+        <meta charset="utf-8">
+        <style media="screen" type="text/css">
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+                background-color:#c1c1d9;
+            }
+            
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+            }
+            
+            header{
+                width:100%;
+                height:6rem;
+                background-color:#9999bf;
+            }
+            
+            #loginForm{
+                width:45rem;
+                height:25rem;
+                background-color:white;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+            }
+            
+            h1{
+                border-bottom:1px solid darkgray;
+                color:#6e6fa5;
+                font-size:1.4rem;
+                font-weight:normal;
+                height:4.5rem;
+                padding-top:1.2rem;
+                padding-left:1.5rem;
+            }
+            
+            form{
+                width:80%;
+                height: calc(100% - 4.5rem);
+                margin:0 auto;
+            }
+            
+            input{
+                display:block;
+                border-bottom:1px solid darkgray;
+                width:100%;
+                height:3rem;
+                margin-bottom:1rem;
+                padding-left:1rem;
+            }
+            
+            input[type=text]{
+                position:relative;
+                margin-top:2rem;
+            }
+            
+            .btns{
+                width:100%;
+                height:3rem;
+                text-align: center;
+                padding-top:0.75rem;
+                margin-top:1rem;
+                cursor:pointer;
+                transition:0.5s;
+            }
+            
+            .btns#signupBtn{
+                color:#6e6fa5;
+            }
+            
+            .btns#loginBtn{
+                background-color:#6e6fa5;
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        <div id = "loginForm">
+            <h1>로그인</h1>
+            <form>
+                <input type = "text" placeholder = "아이디">
+                <input type = "password" placeholder="비밀번호">
+                
+                <div class = "btns" id = "signupBtn">
+                    회원가입
+                </div>
+                <div class = "btns" id = "loginBtn">
+                    로그인
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
