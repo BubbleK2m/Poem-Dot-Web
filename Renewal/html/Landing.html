@@ -187,6 +187,7 @@
                 xhr.onreadystatechange = (e) => {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
+                            localStorage.setItem('Poem-Session-Key', xhr.getResponseHeader('Poem-Session-Key'));
                             callback(true);
                         } else {
                             callback(false);
