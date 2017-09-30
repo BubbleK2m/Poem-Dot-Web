@@ -194,7 +194,7 @@
                     }
                 };
 
-                xhr.open('POST', 'http://localhost:5000/login', false);
+                xhr.open('POST', 'http://52.43.254.152/login', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.send(`email=${email}&password=${password}`);
@@ -214,7 +214,7 @@
                     }
                 };
 
-                xhr.open('POST', 'http://localhost:5000/join/email/check', false);
+                xhr.open('POST', 'http://52.43.254.152/join/email/check', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.send(`email=${email}`); 
@@ -234,7 +234,7 @@
                     }
                 };
 
-                xhr.open('POST', 'http://localhost:5000/join', false);
+                xhr.open('POST', 'http://52.43.254.152/join', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.send(`email=${email}&password=${password}&name=${name}`);  
@@ -259,6 +259,7 @@
                 login(email, password, (result) => {
                     if (result) {
                         alert('로그인 성공');
+                        location.href = './MainPage.html';
                     } else {
                         alert('로그인 실패');
                     }
