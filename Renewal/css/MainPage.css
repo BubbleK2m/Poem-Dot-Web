@@ -1,0 +1,373 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    min-width: 1100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+header {
+    width: 100%;
+    height: 6rem;
+    border-bottom: 1px solid gray;
+    margin-top: 2rem;
+}
+
+#mainLogo {
+    font-family: 'poiret one';
+    font-size: 3rem;
+    margin-left: 4rem;
+    letter-spacing: 3px;
+}
+
+ul {
+    position: absolute;
+    right: 0;
+    top: 3.4rem;
+    right: 4rem;
+}
+
+ul li {
+    display: inline-block;
+    font-family: 'nanumsquare';
+    font-weight: normal;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding-right: 2rem;
+}
+
+ul li a {
+    color: black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+ul li a:hover {
+    letter-spacing: 3px;
+}
+
+
+/**/
+
+#poemBack {
+    width: 100%;
+    height: 25rem;
+    background-color: #292929;
+}
+
+#poemPart {
+    display: inline-block;
+    vertical-align: top;
+    width: 60%;
+    height: 100%;
+    margin-top: -56px;
+}
+
+#poemBack h1 {
+    color: white;
+    font-family: 'nanumsquare';
+    font-weight: lighter;
+    font-size: 1.3rem;
+    padding-left: 0.1rem;
+    padding-top: 2rem;
+}
+
+#poemBack .backImg {
+    width: 13rem;
+    height: 18.5rem;
+    display: inline-block;
+    margin-top: 1rem;
+    vertical-align: top;
+}
+
+#poemPart h2 {
+    color: white;
+    font-family: 'nanumsquare';
+    font-weight: lighter;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    margin-left: 2rem;
+    margin-top: 9rem;
+}
+
+h2#author {
+    font-size: 0.9rem;
+    margin-top: 1.2rem;
+}
+
+h2#explain {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-top: 1.8rem;
+}
+
+.thumbUp {
+    width: 28px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+#thumbCnt {
+    color: white;
+    font-family: 'nanumsquare';
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-top: 1.45rem;
+    margin-left: 8px;
+}
+
+#showMoreText {
+    position: absolute;
+    right: 3.1rem;
+    color: white;
+    font-family: 'nanumsquare';
+    top: 17.5rem;
+}
+
+#showMore {
+    position: absolute;
+    width: 2.8rem;
+    right: 3.15rem;
+    margin-top: 8rem;
+    cursor: pointer;
+}
+
+
+/* slider 부분 */
+
+.sliders {
+    height: 100%;
+    width: 40rem;
+    margin-left: 20rem;
+}
+
+
+/**/
+
+#likePoem {
+    width: 100%;
+    height: 34rem;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+#likePoem h1 {
+    font-family: 'nanumsquare';
+    font-weight: lighter;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #202020;
+    margin-top: 4rem;
+}
+
+#seeLikeMore {
+    position: absolute;
+    right: 3rem;
+    color: #424242;
+    font-family: 'nanumsquare';
+    margin-top: -2.3rem;
+}
+
+#likePoem img {
+    position: absolute;
+    right: 3.6rem;
+    width: 24px;
+    margin-top: -0.8rem;
+    cursor: pointer;
+}
+
+#likePoemCover {
+    width: 100%;
+    height: 23rem;
+    text-align: center;
+}
+
+.likePoems {
+    width: 20rem;
+    height: 25rem;
+    border: 1px solid #d9d9d9;
+    display: inline-block;
+    margin: 2.5rem;
+    margin-top: 4rem;
+}
+
+.likePoemPics {
+    width: 100%;
+    height: 88%;
+    background-position: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.likePoemPics#firstLike {
+    background-image: url(../imgs/poemTest.jpg);
+}
+
+.likePoemPics#secondLike {
+    background-image: url(../imgs/poemTest3.jpg);
+}
+
+.likePoemPics#thirdLike {
+    background-image: url(../imgs/poemTest4.jpg);
+}
+
+.likePoemTitle {
+    width: 100%;
+    height: 12%;
+    font-family: 'nanumsquare';
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding-top: 0.9rem;
+}
+
+
+/* 애니메이션 */
+
+.hoverAnim {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.hoverAnim:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: default;
+}
+
+.hoverAnim p {
+    color: white;
+    font-family: 'nanumsquare';
+    font-weight: lighter;
+    text-align: left;
+    padding-left: 1rem;
+    padding-top: 6.5rem;
+    line-height: 3;
+    letter-spacing: 1px;
+}
+
+
+/* 귀찮아서 그냥 css 중복 - 원래는 이중 클래스로 해야댐.*/
+
+#recommendPoem {
+    width: 100%;
+    height: 34rem;
+}
+
+#recommendPoem h1 {
+    font-family: 'nanumsquare';
+    font-weight: lighter;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #202020;
+    margin-top: 4rem;
+}
+
+#seeRecommendMore {
+    position: absolute;
+    right: 3rem;
+    color: #424242;
+    font-family: 'nanumsquare';
+    margin-top: -2.3rem;
+}
+
+#recommendPoem img {
+    position: absolute;
+    right: 3.6rem;
+    width: 24px;
+    margin-top: -0.8rem;
+    cursor: pointer;
+}
+
+#recommendPoemCover {
+    width: 100%;
+    height: 23rem;
+    text-align: center;
+}
+
+.recommendPoems {
+    width: 20rem;
+    height: 25rem;
+    border: 1px solid #d9d9d9;
+    display: inline-block;
+    margin: 2.5rem;
+    margin-top: 4rem;
+}
+
+.recommendPoemPics {
+    width: 100%;
+    height: 88%;
+    background-position: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.recommendPoemPics#firstLikeR {
+    background-image: url(../imgs/poemTest5.jpg);
+}
+
+.recommendPoemPics#secondLikeR {
+    background-image: url(../imgs/poemTest6.jpg);
+}
+
+.recommendPoemPics#thirdLikeR {
+    background-image: url(../imgs/poemTest7.jpg);
+}
+
+.recommendPoemTitle {
+    width: 100%;
+    height: 12%;
+    font-family: 'nanumsquare';
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding-top: 0.9rem;
+}
+
+
+/* 애니메이션 */
+
+.hoverAnim {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.hoverAnim:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: default;
+}
+
+.hoverAnim p {
+    color: white;
+    font-family: 'nanumsquare';
+    font-weight: lighter;
+    text-align: left;
+    padding-left: 1rem;
+    padding-top: 6.5rem;
+    line-height: 3;
+    letter-spacing: 1px;
+}
+
+
+/* footer */
+
+footer {
+    width: 100%;
+    height: 10rem;
+    margin-top: 5rem;
+    background-color: #323232;
+}

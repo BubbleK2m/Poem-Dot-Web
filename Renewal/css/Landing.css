@@ -1,0 +1,301 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-image: url(../imgs/back.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'nanumsquare';
+}
+
+#coverLanding {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+nav {
+    width: 100%;
+    height: 6rem;
+}
+
+nav #landingLogo {
+    color: white;
+    font-family: 'poiret one';
+    font-size: 3rem;
+    letter-spacing: 3px;
+    margin-left: 5rem;
+    margin-top: 2.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    position: absolute;
+    right: 4rem;
+    top: 3.25rem;
+}
+
+nav ul li {
+    display: inline-block;
+    padding-left: 1rem;
+    padding-top: 0.4rem;
+    width: 6rem;
+    height: 2.35rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 1rem;
+    font-family: 'nanumsquare';
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+/**/
+
+#coverForm {
+    height: 20rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    color: white;
+    font-family: 'nanumsquare';
+    font-weight: normal;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: lighter;
+    animation-name: titleOpa1;
+    animation-duration: 1.25s;
+    animation-fill-mode: forwards;
+    padding-top: 4rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: white;
+    font-family: 'nanumsquare';
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0;
+    animation-name: titleOpa2;
+    animation-delay: 1.25s;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes titleOpa1 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes titleOpa2 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        letter-spacing: 2px;
+    }
+}
+
+#toMainBtn {
+    width: 16rem;
+    height: 2.75rem;
+    /*                background-color: #F4586D;*/
+    margin: 0 auto;
+    display: table;
+    border-radius: 50px;
+    margin-top: 2rem;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: 0.65s;
+    opacity: 0;
+    animation-name: titleOpa1;
+    animation-delay: 3s;
+    animation-duration: 0.65s;
+    animation-fill-mode: forwards;
+}
+
+#toMainBtn:hover #toMainBtnText {
+    letter-spacing: 2px;
+}
+
+#toMainBtnText {
+    display: table-cell;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    /*                font-weight: bold;*/
+    font-size: 1rem;
+    font-family: 'nanumsquare';
+    letter-spacing: 0.5px;
+    transition: 0.65s;
+}
+
+
+/* 로그인 모달 폼 */
+
+
+/* 로그인 폼 */
+
+#loginForm {
+    width: 27.5rem;
+    height: 32rem;
+    background-color: white;
+    border-radius: 2px;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 기본적으로 폼 안보이게 */
+    display: none;
+}
+
+#opacityCover {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 8888;
+    display: none;
+}
+
+.exitBtn {
+    width: 1.9rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+.formLogo {
+    color: #F4586D;
+    text-align: center;
+    font-family: 'poiret one';
+    font-weight: bold;
+    font-size: 4rem;
+    letter-spacing: 5px;
+    margin-top: 2rem;
+}
+
+
+/* 이메일 입력 */
+
+label {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #F4586D;
+    letter-spacing: 1px;
+    margin-top: 3rem;
+}
+
+.typeForms {
+    width: 90%;
+    height: 2.5rem;
+    margin: 0 auto;
+    display: block;
+    border-bottom: 2px solid #F4586D;
+    letter-spacing: 1px;
+    padding-left: 2px;
+    color: #666666;
+    font-family: 'Noto Sans KR';
+    font-weight: 300;
+}
+
+
+/* 로그인 및 비밀번호 버튼*/
+
+.clickBtns {
+    width: 90%;
+    margin: 0 auto;
+    height: 3.5rem;
+    border-radius: 1px;
+    margin-top: 3rem;
+    text-align: center;
+    color: white;
+    letter-spacing: 2.5px;
+    padding-top: 1.25rem;
+    cursor: pointer;
+    background-color: #F4586D;
+}
+
+
+/* 비밀번호 찾기 */
+
+#loginForm #findPwd {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #505050;
+    text-align: center;
+    margin-top: 1.9rem;
+    letter-spacing: 0.5px;
+}
+
+
+/* 회원가입 폼 */
+
+
+/* 회원가입 모달 */
+
+#signupForm {
+    width: 27.5rem;
+    height: 37.8rem;
+    background-color: white;
+    border-radius: 2px;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#signupForm label {
+    margin-top: 2rem;
+}
+
+#signupBtn {
+    margin-top: 2rem;
+}
+
+#announce {
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: 1.3rem;
+}
+
+#repeatCheck {
+    position: absolute;
+    top: 10.4rem;
+    right: 1.5rem;
+    cursor: pointer;
+}
