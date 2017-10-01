@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>메인페이지</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href = "../css/MainPage.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div id = "mainLogo">Poem</div>
+            <ul>
+                <li><a>메인</a></li>
+                <li><a>마이페이지</a></li>
+                <li><a>로그아웃</a></li>
+            </ul>
+        </header>
+        
+        <div id = "poemBack">
+            <!-- 임시 3개 --> 
+            <div class = "sliders">
+                <h1>나의 대표 시집</h1>
+                <img src = "../imgs/poemTest2.jpg" class = "backImg">
+                <div id = "poemPart">
+                    <h2>별 헤는 밤</h2>
+                    <h2 id = "author">윤 동 주</h2>
+                    <h2 id = "explain">하늘과 바람과 별과 시를 노래하고 싶어서 만든 시입니다.</h2>
+
+                    <img src = "../imgs/thumbUp.png" class="thumbUp">
+                    <div id = "thumbCnt">
+                        127
+                    </div>
+                </div>
+                
+                <div id = "showMoreText">
+                    더 보기
+                </div>
+                <img src = "../imgs/plus.png" id = "showMore">
+            </div>
+        </div>
+        
+        <div id = "likePoem">
+            <h1>
+                좋아하는 시집
+            </h1>
+            <div id = "seeLikeMore">
+                더 보기
+            </div>
+            <img src = "../imgs/plus2.png">
+            
+            <div id= "likePoemCover">
+                <div class = "likePoems">
+                    <div class = "likePoemPics" id = "firstLike">
+                        <div class = "hoverAnim">
+                            <p>
+                                <span class = "likeAuthor">
+                                    이소월
+                                </span>
+                                <br>
+                                <span class = "likeCount">
+                                    38
+                                </span> 좋아요
+                                <br>
+                                <span class = "likeDate">
+                                    2017/09/28
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "likePoemTitle">
+                        <div class = "poemTitle">
+                            계절의 여행    
+                        </div>
+                    </div>
+                </div>
+                <div class = "likePoems">
+                    <div class = "likePoemPics" id = "secondLike">
+                        <div class = "hoverAnim">
+                            <p>
+                                <span class = "likeAuthor">
+                                    정지우
+                                </span>
+                                <br>
+                                <span class = "likeCount">
+                                    26
+                                </span> 좋아요
+                                <br>
+                                <span class = "likeDate">
+                                    2017/10/03
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "likePoemTitle">
+                        <div class = "poemTitle">
+                            이른 이별   
+                        </div>
+                    </div>
+                </div>
+                <div class = "likePoems">
+                    <div class = "likePoemPics" id = "thirdLike">
+                        <div class = "hoverAnim">
+                            <p>
+                                <span class = "likeAuthor">
+                                    신연
+                                </span>
+                                <br>
+                                <span class = "likeCount">
+                                    117
+                                </span> 좋아요
+                                <br>
+                                <span class = "likeDate">
+                                    2017/08/14
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "likePoemTitle">
+                        <div class = "poemTitle">
+                            책 속의 그녀   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 분리 -->
+        
+        <div id = "recommendPoem">
+            <h1>
+                추천 시집
+            </h1>
+            <div id = "seeRecommendMore">
+                더 보기
+            </div>
+            <img src = "../imgs/plus2.png">
+            
+            <div id= "recommendPoemCover">
+                <div class = "recommendPoems">
+                    <div class = "recommendPoemPics" id = "firstLikeR">
+                        <div class = "hoverAnim">
+                            <p>
+                                <span class = "recommendAuthor">
+                                    김진
+                                </span>
+                                <br>
+                                <span class = "recommendCount">
+                                    41
+                                </span> 좋아요
+                                <br>
+                                <span class = "recommendDate">
+                                    2017/05/31
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "recommendPoemTitle">
+                        <div class = "poemTitle">
+                            매번 그럴수록    
+                        </div>
+                    </div>
+                </div>
+                <div class = "recommendPoems">
+                    <div class = "recommendPoemPics" id = "secondLikeR">
+                        <div class = "hoverAnim">
+                            <p>
+                                <span class = "recommendAuthor">
+                                    임주연
+                                </span>
+                                <br>
+                                <span class = "recommendCount">
+                                    89
+                                </span> 좋아요
+                                <br>
+                                <span class = "recommendDate">
+                                    2017/06/28
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "recommendPoemTitle">
+                        <div class = "poemTitle">
+                            오늘 또 다시   
+                        </div>
+                    </div>
+                </div>
+                <div class = "recommendPoems">
+                    <div class = "recommendPoemPics" id = "thirdLikeR">
+                        <div class = "hoverAnim">
+                            <p>
+                                <span class = "recommendAuthor">
+                                    이유정
+                                </span>
+                                <br>
+                                <span class = "recommendCount">
+                                    104
+                                </span> 좋아요
+                                <br>
+                                <span class = "recommendDate">
+                                    2017/05/23
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "recommendPoemTitle">
+                        <div class = "poemTitle">
+                            비 내렸던 그날   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            
+        </footer>
+    </body>
+</html>

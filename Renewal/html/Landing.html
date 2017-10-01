@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>랜딩페이지</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+        <link href = "../css/Landing.css" type="text/css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <!-- 기본 랜딩 페이지 -->
+        <div id = "coverLanding">
+            <nav>
+                <div id = "landingLogo">
+                    Poem
+                </div>
+                <ul>
+                    <li>
+                        <a href = "https://github.com/DSMdongly/poem-dot-web"
+                           target = "_blank"
+                           >
+                            ABOUT
+                        </a>
+                    </li>
+                    <li id = "showSignup"><a>SIGN UP</a></li>
+                    <li id = "showLogin"><a>LOGIN</a></li>
+                </ul>
+            </nav>
+            
+            <div id = "coverForm">
+                <h1>시.</h1>
+                <h2>글로 아름다움을 표현하다</h2>
+
+                <div id = "toMainBtn">
+                    <div id = "toMainBtnText">
+                        시 쓰러 가기
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 로그인 모달 폼 -->
+        <div id = "opacityCover"></div>
+            
+        
+        <div id="loginForm">
+            <img src = "../imgs/myCancel.png" class = "exitBtn">
+            
+            <div class = "formLogo">
+                Poem
+            </div>
+            
+            <label>아이디</label>
+            <input type="email"
+                   value="" 
+                   placeholder="아이디를 입력해주세요." 
+                   class="typeForms" 
+                   id="emailForm">
+            
+            <label>비밀번호</label>
+            <input type="password"
+                   value=""
+                   class="typeForms" 
+                   placeholder="비밀번호를 입력해주세요."
+                   id="pwdForm">
+            
+            <div class="clickBtns" id="loginBtn">
+                로그인
+            </div>
+            
+            <div id="findPwd">
+                비밀번호를 잊어버리셨나요?
+                <span style="color:#F4586D;
+                             padding-left:0.5rem;
+                             cursor:pointer;">
+                    비밀번호 찾기
+                </span>
+            </div>
+        </div>
+        <!-- -->
+        
+        <!-- 회원가입 모달 폼 -->
+        <div id = "signupForm">
+            <img src = "../imgs/myCancel.png" class = "exitBtn">
+            
+            <div class = "formLogo">
+                Poem
+            </div>
+            
+            <label>아이디</label>
+            <input type="checkbox" id = "repeatCheck">
+
+            <input type="email"
+                   value="" 
+                   placeholder="아이디를 입력해주세요." 
+                   class="typeForms" 
+                   id="emailForm">
+            
+            <label>비밀번호</label>
+            <input type="password"
+                   value=""
+                   class="typeForms pwdForms" 
+                   placeholder="비밀번호를 입력해주세요."
+                   id="pwdForm">
+            
+            <label>비밀번호 재확인</label>
+            <input type="password"
+                   value=""
+                   class="typeForms pwdForms" 
+                   placeholder="비밀번호를 재입력해주세요."
+                   id="checkPwdForm">
+            
+            <label>닉네임</label>
+            <input type="text"
+                   value=""
+                   class="typeForms" 
+                   placeholder="닉네임을 입력해주세요."
+                   id="nicknameForm">
+            
+            <div class="clickBtns" id="signupBtn">
+                회원가입
+            </div>
+            
+            <div id="announce">
+                가입 계약을 체결하면
+                <span style="color:#F4586D;
+                             cursor:pointer;">
+                    서비스 약관
+                </span>
+                및
+                <span style="color:#F4586D;
+                             cursor:pointer;">
+                    개인 정보 보호 정책
+                </span>
+                에 동의합니다.
+            </div>
+        </div>
+        <!-- -->
+        
+        <!-- 관련 스크립트 -->
+        <script type="text/javascript">
+            //li부분
+            let showLoginBtn = document.getElementById('showLogin');
+            let showSignupBtn = document.getElementById('showSignup');
+            
+            //none인 로그인 폼
+            let loginForm = document.getElementById('loginForm');
+            let signupForm = document.getElementById('signupForm');
+            
+            //투명도 박스
+            let opacityBox = document.getElementById('opacityCover');
+            
+            //보이기 로직
+            function showModal(btn, form){
+                btn.addEventListener('click', () => {
+                    opacityBox.style.display = "block";
+                    form.style.display = "block";
+                    
+                    console.log("Created!");
+                });
+            }
+            
+            //없애기 로직
+            function noneModal(btnCnt, form){
+                let exitBtn = document.getElementsByClassName('exitBtn')[btnCnt];
+                exitBtn.addEventListener('click', () => {
+                    opacityBox.style.display = "none";
+                    form.style.display = "none";
+                });
+            }
+                
+            /* 폼 보이기 */
+            showModal(showLoginBtn, loginForm);
+            showModal(showSignupBtn, signupForm);
+            
+            /* 폼 없애기 */
+            noneModal(0, loginForm);
+            noneModal(1, signupForm);
+        </script>
+
+        <script>
+            // 로그인 요청
+            const login = (email, password, callback) => {
+                let xhr = new XMLHttpRequest();
+                
+                xhr.onreadystatechange = (e) => {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            callback(true);
+                        } else {
+                            callback(false);
+                        }
+                    }
+                };
+
+                xhr.open('POST', 'http://52.43.254.152/login', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.send(`email=${email}&password=${password}`);
+            };
+
+            // 이메일 중복확인 요청
+            const checkEmail = (email, callback) => {
+                let xhr = new XMLHttpRequest();
+                
+                xhr.onreadystatechange = (e) => {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            callback(true);
+                        } else {
+                            callback(false);
+                        }
+                    }
+                };
+
+                xhr.open('POST', 'http://52.43.254.152/join/email/check', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.send(`email=${email}`); 
+            };
+
+            // 회원가입 요청
+            const signup = (email, password, name, callback) => {
+               let xhr = new XMLHttpRequest();
+                
+                xhr.onreadystatechange = (e) => {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 201) {
+                            callback(true);
+                        } else {
+                            callback(false);
+                        }
+                    }
+                };
+
+                xhr.open('POST', 'http://52.43.254.152/join', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.send(`email=${email}&password=${password}&name=${name}`);  
+            };
+        </script>
+
+        <script>
+            let loginEmailForm = document.querySelector('#loginForm #emailForm');
+            let loginPwdForm = document.querySelector('#loginForm #pwdForm');
+
+            let loginBtn = document.querySelector('#loginForm #loginBtn');
+
+            loginBtn.onclick = (e) => {
+                let email = loginEmailForm.value;
+                let password = loginPwdForm.value;
+
+                if (!email || !password) {
+                    alert('값이 입력되지 않음');
+                    return;
+                }
+
+                login(email, password, (result) => {
+                    if (result) {
+                        alert('로그인 성공');
+                        location.href = './MainPage.html';
+                    } else {
+                        alert('로그인 실패');
+                    }
+                });
+            };
+        </script>
+
+        <script>
+            let signupEmailForm = document.querySelector('#signupForm #emailForm');
+            let signupRepeatCheck = document.querySelector('#signupForm #repeatCheck');
+
+            signupEmailForm.onblur = (e) => {
+                let email = signupEmailForm.value;
+                
+                checkEmail(email, (result) => {
+                    if (result) {
+                        alert('중복되는 이메일이 존재하지 않습니다')
+                        signupRepeatCheck.value = true;
+                    } else {
+                        alert('중복되는 이메일이 존재합니다');
+                        signupRepeatCheck.value = false;
+                    }
+                });
+            };
+
+            let signupPwdForms = document.querySelectorAll('#signupForm .pwdForms');
+            let signupNameForm = document.querySelector('#signupForm #nicknameForm');
+
+            let signupBtn = document.querySelector('#signupForm #signupBtn');
+            signupBtn.onclick = (e) => {
+                let email = signupEmailForm.value;
+                let emailCheck = signupRepeatCheck.value;
+                let passwords = [ signupPwdForms[0].value, signupPwdForms[1].value ];
+                let name = signupNameForm.value;
+
+                if (!email || !passwords[0] || !passwords[0] || !name) {
+                    alert('값이 입력되지 않음');
+                    return;
+                }
+
+                if (!emailCheck) {
+                    alert('사용할 수 없는 아이디');
+                    return;
+                }
+
+                if (passwords[0] !== passwords[1]) {
+                    alert('비밀번호가 일치하지 않음');
+                    return;
+                }
+
+                signup(email, passwords[0], name, (result) => {
+                    if (result) {
+                        alert('회원가입 성공');
+                    } else {
+                        alert('회원가입 실패');
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
