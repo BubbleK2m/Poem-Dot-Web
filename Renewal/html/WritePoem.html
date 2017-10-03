@@ -7,7 +7,7 @@
         <style media = "screen" type="text/css">
             body{
                 width:100%;
-                height:200vh;
+                height:100%;
                 margin:0 auto;
                 background-color:#f4f4f4;
             }
@@ -55,45 +55,69 @@
                 color:#404040;
             }
             
+            input, textarea{
+                font-size:1rem;
+                border-radius: 3px;
+                box-shadow: 0 0 2px darkgray;
+                letter-spacing: 0.5px;
+                display:block;
+                color:#404040;
+            }
+            
             #writeForm #poemTitle{
                 width:27rem;
                 height:2.7rem;
-                border-radius: 3px;
-                box-shadow:0 0 2px darkgray;
                 margin:0 auto;
-                display:block;
                 margin-top:2rem;
-                padding-left:1rem;
-                letter-spacing: 0.5px;
+                padding-left:0.5rem;
             }
             
             #writeForm #poemAuthor{
                 float:right;
                 width:10rem;
                 height:2.7rem;
-                border-radius: 3px;
-                box-shadow: 0 0 2px darkgray;
-                letter-spacing: 0.5px;
-                padding-left:2.7rem;
                 margin-top:1rem;
-                display:block;
+                text-align: center;
+                letter-spacing: 2px;
             }
             
             #writeForm #poemContent{
-                display:block;
                 clear: both;
-                width:27rem;
-                height:28rem;
+                min-width:27rem;
+                min-height:28rem;
                 margin:0 auto;
-                border-radius: 3px;
-                box-shadow: 0 0 2px darkgray;
                 position:relative;
                 top:2rem;
                 padding-bottom:24.5rem;
+                line-height:1.5;
+                overflow:hidden;
             }
             
             #poemContent::placeholder{
-                padding-left:1rem;
+                padding-left:0.5rem;
+                padding-top:0.5rem;
+            }
+            
+            /**/
+            
+            #writeBtn{
+                width:8rem;
+                height:2.5rem;
+                background-color:#a877d0;
+                margin:0 auto;
+                border-radius: 4px;
+                margin-top:2rem;
+                margin-bottom:4rem;
+                display:table;
+            }
+            
+            #writeBtn #writeBtnText{
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+                color:white;
+                font-size:0.95rem;
+                letter-spacing: 3px;
             }
         </style>
     </head>
@@ -111,8 +135,17 @@
             
             <input type = "text" id = "poemAuthor" placeholder="작성자 입력">
             
-            <input type = "text" id = "poemContent" placeholder = "시 내용 작성">
+            <textarea id = "poemContent" placeholder = "시 내용 작성"></textarea>
         </div>
+        
+        <div id = "writeBtn">
+            <div id = "writeBtnText">
+                작성
+            </div>
+        </div>
+        <script type="text/javascript">
+            
+        </script>
     </body>
 </html>
 
