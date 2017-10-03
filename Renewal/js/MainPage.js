@@ -76,10 +76,12 @@ function showHeartedBooks(page, length) {
 
             for (let book of books) {
                 let bookElement = document.createElement('div');
-                bookElement.setAttribute('class', 'likePoems');
+                bookElement.setAttribute('class', 'likePoems');   
+                
+                let pictureNum = book.id > 7 ? book.id % 7 + 1 : 7 % book.id + 1;
 
                 let bookContent = 
-                    `<div class = "likePoemPics" id = "firstLike">
+                    `<div class = "likePoemPics" style="background-image: url(../imgs/poemTest${pictureNum}.jpg)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "likeAuthor">
@@ -103,6 +105,12 @@ function showHeartedBooks(page, length) {
                     </div>`;
                                 
                 bookElement.innerHTML = bookContent;
+
+                bookElement.onclick = (e) => {
+                    localStorage.setItem('Poem-Book-Id', book.id);
+                    location.href = './Book.html'
+                };
+
                 heartedBookCover.appendChild(bookElement);
             }
         } else {
@@ -127,8 +135,10 @@ function showPopularBooks (page, length) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'recommendPoems');
 
+                let pictureNum = book.id > 7 ? book.id % 7 + 1 : 7 % book.id + 1;
+
                 let bookContent = 
-                    `<div class = "recommendPoemPics" id = "firstLikeR">
+                    `<div class = "recommendPoemPics" style="background-image: url(../imgs/poemTest${pictureNum}.jpg)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "recommendAuthor">
@@ -152,6 +162,12 @@ function showPopularBooks (page, length) {
                     </div>`;
                                 
                 bookElement.innerHTML = bookContent;
+
+                bookElement.onclick = (e) => {
+                    localStorage.setItem('Poem-Book-Id', book.id);
+                    location.href = './Book.html'
+                };
+
                 recommendBookCover.appendChild(bookElement);
             }
         } else {

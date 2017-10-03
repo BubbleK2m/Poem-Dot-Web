@@ -41,9 +41,11 @@ let bookElement = bookCover.querySelector('#poemCover');
 function showBook(id) {
     readBook(id, (result, book) => {
         if (result) {
+            let pictureNum = id > 7 ? id % 7 + 1 : 7 % id + 1;
+
             bookElement.innerHTML =
                 `<h1>시집 '${book.title}'</h1>
-                <img src = "../imgs/poemTest${(id % 6) + 1}.jpg" class = "backImg">
+                <img src = "../imgs/poemTest${pictureNum}.jpg" class = "backImg">
                 <div id = "poemPart">
                     <h2>${book.title}</h2>
                     <h2 id = "author">${book.writer}</h2>
@@ -55,10 +57,41 @@ function showBook(id) {
                     </div>
                 </div>`;
         } else {
-            alert('해당 시집을 조회할 수 없습니다.');
+            alert('시집을 조회할 수 없음');
+            location.href = './MainPage.html';
+        }
+    });
+}
+
+let poemsCover = document.getElementById('poemsBack');
+
+function showPoemsAtBook(id) {
+    readPoemsAtBook(id, (result, poems) => {
+        if (result) {
+            for (let poem of poems) {
+                let poemElement = document.createElement('div');
+                poemElement.setAttribute('class', 'poemsCover');
+
+                let pictureNum = poem.id < 5 ? 5 % poem.id : poem.id % 5 + 1;
+
+                let poemContent = 
+                    `<!-- 시 배경 이미지 class -->
+                    <img src = "../imgs/poem${pictureNum}.jpg" class = "poemImgs">
+                    <div class = "poemsContent">
+                        <h1>${poem.title}</h1>
+                        <h2>${poem.writer}</h2>
+                        <h2>${poem.writer} 의 시</h2>
+                    </div>`;
+
+                poemElement.innerHTML = poemContent;
+                poemsCover.appendChild(poemElement);
+            }
+        } else {
+            alert('시를 조회할 수 없음');
             location.href = './MainPage.html';
         }
     });
 }
 
 showBook(localStorage.getItem('Poem-Book-Id'));
+showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));
