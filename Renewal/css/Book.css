@@ -59,7 +59,7 @@ ul li input[type=text] {
     width: 12rem;
     height: 1.5rem;
     border-bottom: 1px solid darkgray;
-    margin-top: -0.2rem;
+    margin-top: -0.3rem;
     padding-left: 0.5rem;
 }
 
@@ -154,7 +154,7 @@ h2#explain {
 
 h1 {
     font-weight: lighter;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin-left: 10rem;
     margin-top: 3rem;
 }
