@@ -52,13 +52,8 @@
                     console.log(index);
                     
                     /* 각각 text-align들 */
-                    if(index == 0){
-                        textValue.style.textAlign = "left";
-                    }else if(index == 1){
-                        textValue.style.textAlign = "center";
-                    }else{
-                        textValue.style.textAlign = "right";
-                    }
+                    let setIndex = ["left", "center", "right"];
+                    textValue.style.textAlign = setIndex[index];
                 });
             });
         </script>
