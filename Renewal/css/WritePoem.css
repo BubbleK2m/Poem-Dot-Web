@@ -1,0 +1,116 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'nanumsquare';
+}
+
+header {
+    width: 100%;
+    height: 4rem;
+    background-color: #404040;
+}
+
+header #pageLogo {
+    color: white;
+    font-family: 'poiret one';
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-top: 0.55rem;
+}
+
+#writeForm {
+    width: 60%;
+    height: calc(100% - 4rem);
+    /*
+                border-right:1px solid gray;
+                border-left:1px solid gray;
+*/
+    margin: 0 auto;
+}
+
+#writeForm h1 {
+    font-size: 1.6rem;
+    font-weight: normal;
+    text-align: center;
+    padding-top: 2rem;
+    color: #404040;
+}
+
+input,
+textarea {
+    font-size: 1rem;
+    border-radius: 3px;
+    box-shadow: 0 0 2px darkgray;
+    letter-spacing: 0.5px;
+    display: block;
+    color: #404040;
+}
+
+#writeForm #poemTitle {
+    width: 27rem;
+    height: 2.7rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding-left: 0.5rem;
+}
+
+#writeForm #poemAuthor {
+    float: right;
+    width: 10rem;
+    height: 2.7rem;
+    margin-top: 1rem;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+#writeForm #poemContent {
+    clear: both;
+    min-width: 27rem;
+    min-height: 28rem;
+    margin: 0 auto;
+    position: relative;
+    top: 2rem;
+    padding-bottom: 24.5rem;
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+#poemContent::placeholder {
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+
+/**/
+
+#writeBtn {
+    width: 8rem;
+    height: 2.5rem;
+    background-color: #a877d0;
+    margin: 0 auto;
+    border-radius: 4px;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    display: table;
+}
+
+#writeBtn #writeBtnText {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+}
