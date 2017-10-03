@@ -30,15 +30,8 @@ let poemAligns = writeForm.querySelectorAll('.setAligns');
 Array.from(poemAligns).forEach((elem, index) => {
     elem.addEventListener('click', () => {
         /* 각각 text-align들 */
-        if (index === 0) {
-            contentForm.style.textAlign = "left";
-        } else if (index === 1) {
-            contentForm.style.textAlign = "center";
-        } else if (index === 2) {
-            contentForm.style.textAlign = "right";
-        } else {
-            contentForm.style.textAlign = "left";
-        }
+        let setIndex = ["left", "center", "right"];
+        contentForm.style.textAlign = setIndex[index];
     });
 });
 
