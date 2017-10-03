@@ -43,20 +43,7 @@
             
         </div>
         
-        <script type="text/javascript">
-            let setAlign = document.getElementsByClassName('setAligns');
-            
-            Array.from(setAlign).forEach((elem, index) => {
-                elem.addEventListener('click', () => {
-                    let textValue = document.getElementById('poemContent');
-                    console.log(index);
-                    
-                    /* 각각 text-align들 */
-                    let setIndex = ["left", "center", "right"];
-                    textValue.style.textAlign = setIndex[index];
-                });
-            });
-        </script>
+        <script type="text/javascript" src="../js/WritePoem.js"></script>
     </body>
 </html>
 

@@ -18,7 +18,7 @@ function addPoem(title, content, alignment, callback) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'))
 
-    xhr.send(`title=${title}&content=${content}&alignment${alignment}`);
+    xhr.send(`title=${title}&content=${content}&alignment=${alignment}`);
 }
 
 
