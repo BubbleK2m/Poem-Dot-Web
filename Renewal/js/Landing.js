@@ -12,10 +12,10 @@ let opacityBox = document.getElementById('opacityCover');
 //보이기 로직
 function showModal(btn, form){
     btn.addEventListener('click', () => {
-    opacityBox.style.display = "block";
-    form.style.display = "block";
-                    
-    console.log("Created!");
+        opacityBox.style.display = "block";
+        form.style.display = "block";
+                        
+        console.log("Created!");
     });
 }
             
