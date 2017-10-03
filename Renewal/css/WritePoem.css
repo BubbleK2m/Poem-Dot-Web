@@ -35,10 +35,11 @@ header #pageLogo {
     color: white;
     font-family: 'poiret one';
     text-align: center;
-    font-size: 2.4rem;
+    font-size: 3rem;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     padding-top: 0.55rem;
+    padding-left:0.4rem;
 }
 
 #writeForm {
