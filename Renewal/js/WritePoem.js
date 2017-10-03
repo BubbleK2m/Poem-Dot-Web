@@ -36,6 +36,8 @@ Array.from(poemAligns).forEach((elem, index) => {
             contentForm.style.textAlign = "center";
         } else if (index === 2) {
             contentForm.style.textAlign = "right";
+        } else {
+            contentForm.style.textAlign = "left";
         }
     });
 });

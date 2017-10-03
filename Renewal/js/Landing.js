@@ -138,7 +138,7 @@ signupEmailForm.onblur = (e) => {
 };
 
 let signupPwdForms = signupForm.querySelectorAll('.pwdForms');
-let signupNameForm = signupForm.querySelector('nicknameForm');
+let signupNameForm = signupForm.querySelector('#nicknameForm');
 
 let signupBtn = signupForm.querySelector('#signupBtn');
 signupBtn.onclick = (e) => {
