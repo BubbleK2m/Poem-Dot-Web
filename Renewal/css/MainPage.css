@@ -54,6 +54,21 @@ ul li a:hover {
     letter-spacing: 3px;
 }
 
+ul li input[type=text]{
+    width:12rem;
+    height:1.5rem;
+    border-bottom:1px solid darkgray;
+    margin-top:-0.2rem;
+    padding-left:0.5rem;
+}
+
+ul img{
+    display:inline-block;
+    margin-left:-2rem;
+    width:20px;
+    cursor:pointer;
+}
+
 
 /**/
 
