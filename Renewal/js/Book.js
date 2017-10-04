@@ -84,6 +84,14 @@ function showPoemsAtBook(id) {
                     </div>`;
 
                 poemElement.innerHTML = poemContent;
+
+                poemElement.onclick = (((poem) => {
+                    return (e) => {
+                        localStorage.setItem('Poem-Poem-Id', poem.id);
+                        location.href = './Poem.html';
+                    };
+                })(poem));
+
                 poemsCover.appendChild(poemElement);
             }
         } else {
