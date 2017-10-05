@@ -167,6 +167,7 @@ h1 {
                 border-top:1px solid gray;
 */
     margin-top: 2rem;
+    cursor: pointer;
 }
 
 .poemImgs {

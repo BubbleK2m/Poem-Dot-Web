@@ -114,7 +114,6 @@ function showHeartedBooks(page, length) {
                 heartedBookCover.appendChild(bookElement);
             }
         } else {
-            alert(`have not anything hearted books`);
         }
     });
 }
@@ -127,7 +126,7 @@ function showPopularBooks (page, length) {
             } else {
                 seeRecommendMoreCover.style.display = '';
                 seeRecommendMoreCover.onclick = (e) => {
-                    showRecommendBooks(page + 1, length);
+                    showPopularBooks(page + 1, length);
                 };
             }
 
@@ -171,7 +170,6 @@ function showPopularBooks (page, length) {
                 recommendBookCover.appendChild(bookElement);
             }
         } else {
-            alert(`have not anything popular books`);
         }
     });
 }

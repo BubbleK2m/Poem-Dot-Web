@@ -37,7 +37,7 @@ Array.from(poemAligns).forEach((elem, index) => {
 
 let writeBtn = writeForm.querySelector('#writeBtn');
 
-function writePoem(title, content, alignment) {
+const writePoem = (title, content, alignment) => {
     addPoem(title, content, alignment, (result) => {
         if (result) {
             alert('시 작성 성공');
@@ -52,6 +52,11 @@ writeBtn.onclick = (e) => {
     let title = titleForm.value;
     let content = contentForm.value;
     
+    if (!title || !alignment) {
+        alert('값이 입력되지 않음');
+        return;
+    }
+
     let alignment = contentForm.style.textAlign;
 
     if (alignment === 'left') {
