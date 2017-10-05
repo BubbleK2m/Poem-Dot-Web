@@ -21,7 +21,11 @@
         <h1>시집 제작하기</h1>
         <div id = "poemCover">
             <div class = "covers" id = "coverImg">
-                <input type = "file" id = "realImg">
+                <input type = "file" id = "realImg" accept = "image/*">
+                <!-- 보여줄 이미지 -->
+                <div id = "showFileImg">
+                    
+                </div>
             </div>
             <div class = "covers" id = "coverTitle">
                 <input type = "text" id = "titleName" placeholder="등록할 시집의 이름을 입력해주세요.">
@@ -89,6 +93,7 @@
         </footer>
         
         <script type = "text/javascript">
+            //클릭 시 opacity 변경 관련 로직
             let clickImg = document.getElementsByClassName('blackCover');
             let clickCnt = 0;
             
@@ -101,6 +106,34 @@
                     }
                });
             });
+            
+            //input type이 file시 이미지 가져오기
+            let uploadImg = document.getElementById('realImg');
+            let appendImg = document.getElementById('showFileImg');
+            
+            uploadImg.onchange = function (e) {
+                e.preventDefault();
+                
+                let file = uploadImg.files[0],
+                    reader = new FileReader();
+                
+                reader.onload = function (event){
+                    let img = new Image();
+                    img.src = event.target.result;
+                    
+//                    //이미지 크기
+//                    if(img.width > 175){
+//                        console.log("overflow!");
+//                        img.width = 175;
+//                    }
+                    
+                    appendImg.innerHTML = '';
+                    appendImg.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+                
+                return false;
+            };
         </script>
     </body>
 </html>
