@@ -119,12 +119,12 @@ h1 {
 }
 
 #showFileImg{
-    border:1px solid black;
     width:176px;
     height:200px;
     display:block;
     margin:0 auto;
     margin-top:-13.5rem;
+    box-shadow: 0 0 3px darkgray;
 }
 
 #showFileImg img{
