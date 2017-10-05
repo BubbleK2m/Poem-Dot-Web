@@ -1,6 +1,9 @@
 //li부분
 let showLoginBtn = document.getElementById('showLogin');
-let showSignupBtn = document.getElementById('showSignup');    
+let showSignupBtn = document.getElementById('showSignup');
+
+//기타 버튼 - 회원가입폼으로 연결
+let signBtn2 = document.getElementById('toMainBtn');
             
 //none인 로그인 폼
 let loginForm = document.getElementById('loginForm');
@@ -31,6 +34,7 @@ function noneModal(btnCnt, form){
 /* 폼 보이기 */
 showModal(showLoginBtn, loginForm);
 showModal(showSignupBtn, signupForm);
+showModal(signBtn2, signupForm);
             
 /* 폼 없애기 */
 noneModal(0, loginForm);

@@ -1,0 +1,265 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    min-width: 1100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    vertical-align: top;
+    font-family: 'nanumsquare';
+}
+
+header {
+    width: 100%;
+    height: 6rem;
+    padding-top: 1.2rem;
+    background-color: #292929;
+}
+
+header * {
+    color: white !important;
+}
+
+#mainLogo {
+    font-family: 'poiret one';
+    font-size: 3rem;
+    margin-left: 4rem;
+    letter-spacing: 3px;
+}
+
+ul {
+    position: absolute;
+    right: 0;
+    top: 2.5rem;
+    right: 4rem;
+}
+
+ul li {
+    display: inline-block;
+    font-family: 'nanumsquare';
+    font-weight: normal;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding-right: 2rem;
+}
+
+ul li a {
+    color: black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+ul li a:hover {
+    letter-spacing: 3px;
+}
+
+ul li input[type=text] {
+    width: 12rem;
+    height: 1.5rem;
+    border-bottom: 1px solid darkgray;
+    margin-top: -0.3rem;
+    padding-left: 0.5rem;
+    color: #202020 !important;
+}
+
+ul img {
+    display: inline-block;
+    margin-left: -2rem;
+    width: 20px;
+    cursor: pointer;
+}
+
+
+/**/
+
+h1 {
+    color: #404040;
+    font-weight: normal;
+    font-size: 1.6rem;
+    margin-left: 20rem;
+    margin-top: 2.5rem;
+}
+
+#poemCover {
+    width: 60%;
+    height: 16rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    vertical-align: top;
+}
+
+.covers {
+    display: inline-block;
+}
+
+.covers#coverImg {
+    width: 14rem;
+    height: 100%;
+    box-shadow: 0 0 3px darkgray;
+}
+
+#realImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-left: 1.8rem;
+    padding-top: 0.5rem;
+    font-size:0.75rem;
+    letter-spacing: 1px;
+/*
+    background-repeat: no-repeat;
+    background-size: cover;
+*/
+}
+
+#showFileImg{
+    width:176px;
+    height:200px;
+    display:block;
+    margin:0 auto;
+    margin-top:-13.5rem;
+    box-shadow: 0 0 3px darkgray;
+}
+
+#showFileImg img{
+    width:176px !important;
+    height:200px !important;
+}
+
+#titleName {
+    width: 40rem;
+    height: 2.5rem;
+    display: block;
+    margin-top: 6.25rem;
+    border-bottom: 1px solid darkgray;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+
+/**/
+
+h1#selectPoem {
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+
+/**/
+
+#selectPoemCover {
+    text-align: center;
+    vertical-align: top;
+}
+
+.selectPoems {
+    width: 14%;
+    height: 15rem;
+    box-shadow: 0 0 3px darkgray;
+    display: inline-block;
+    border-radius: 4px;
+    margin-right: 3rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.selectPoems:nth-of-type(1) {
+    background-image: url(../imgs/poem1.jpg);
+    margin-left: 3rem;
+}
+
+.selectPoems:nth-of-type(2) {
+    background-image: url(../imgs/poem2.jpg);
+}
+
+.selectPoems:nth-of-type(3) {
+    background-image: url(../imgs/poem3.jpg);
+}
+
+.selectPoems:nth-of-type(4) {
+    background-image: url(../imgs/poem4.jpg);
+}
+
+.selectPoems:nth-of-type(5) {
+    background-image: url(../imgs/poem5.jpg);
+}
+
+.blackCover {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: 0.45s;
+    opacity: 0;
+}
+
+.blackCover:hover {
+    opacity: 1 !important;
+}
+
+.register {
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding-top: 4.5rem;
+}
+
+.checkImg {
+    display: block;
+    margin: 0 auto;
+    width: 5rem;
+    position: relative;
+}
+
+#seeMoreCover {
+    position: absolute;
+    right: 2rem;
+    margin-top: -1.3rem;
+}
+
+#seeMore {
+    font-size: 0.9rem;
+}
+
+#seeMoreCover img {
+    width: 1.5rem;
+    display: block;
+    margin-left: 0.6rem;
+}
+
+
+/**/
+
+#createBook {
+    margin: 0 auto;
+    width: 5.5rem;
+    height: 1.5rem;
+    border-bottom: 1.5px solid #606060;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 4rem;
+    cursor: pointer;
+}
+
+
+/**/
+
+footer {
+    width: 100%;
+    height: 8rem;
+    background-color: #292929;
+    margin-top: 6rem;
+}

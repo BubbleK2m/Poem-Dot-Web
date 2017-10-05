@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>시집 제작 페이지</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href = "../css/PublishBook.css" type="text/css" rel = "stylesheet">
+    </head>
+    <body>
+        <header>
+            <div id = "mainLogo">Poem</div>
+            <ul>
+                <li><a>메인</a></li>
+                <li><a>마이페이지</a></li>
+                <li><a>로그아웃</a></li>
+                <li><input type = "text" placeholder="검색어 입력"></li>
+                <img src = "../imgs/searchImg.png" style = "margin-top:-4px">
+            </ul>
+        </header>
+        
+        <h1>시집 제작하기</h1>
+        <div id = "poemCover">
+            <div class = "covers" id = "coverImg">
+                <input type = "file" id = "realImg" accept = "image/*">
+                <!-- 보여줄 이미지 -->
+                <div id = "showFileImg">
+                    
+                </div>
+            </div>
+            <div class = "covers" id = "coverTitle">
+                <input type = "text" id = "titleName" placeholder="등록할 시집의 이름을 입력해주세요.">
+            </div>
+        </div>
+        
+        <h1 id = "selectPoem">시 선택</h1>
+        
+        <div id = "seeMoreCover">
+            <div id = "seeMore">
+                더 보기
+            </div>
+            <img src = "../imgs/plus2.png">
+        </div>
+        
+        <div id = "selectPoemCover">
+            <div class = "selectPoems">
+                <div class = "blackCover">
+                    <div class = "register">
+                        등록
+                    </div>
+                    <img src = "../imgs/check.png" class = "checkImg">
+                </div>
+            </div>
+            <div class = "selectPoems">
+                <div class = "blackCover">
+                    <div class = "register">
+                        등록
+                    </div>
+                    <img src = "../imgs/check.png" class = "checkImg">
+                </div>
+            </div>
+            <div class = "selectPoems">
+                <div class = "blackCover">
+                    <div class = "register">
+                        등록
+                    </div>
+                    <img src = "../imgs/check.png" class = "checkImg">
+                </div>
+            </div>
+            <div class = "selectPoems">
+                <div class = "blackCover">
+                    <div class = "register">
+                        등록
+                    </div>
+                    <img src = "../imgs/check.png" class = "checkImg">
+                </div>
+            </div>
+            <div class = "selectPoems">
+                <div class = "blackCover">
+                    <div class = "register">
+                        등록
+                    </div>
+                    <img src = "../imgs/check.png" class = "checkImg">
+                </div>
+            </div>
+        </div>
+        
+        <div id = "createBook">
+            제작하기
+        </div>
+        
+        <footer>
+            
+        </footer>
+        
+        <script type = "text/javascript">
+            //클릭 시 opacity 변경 관련 로직
+            let clickImg = document.getElementsByClassName('blackCover');
+            let clickCnt = 0;
+            
+            Array.from(clickImg).forEach((elem, index) => {
+               elem.addEventListener('click', () => {
+                    if(elem.style.opacity == 0){
+                        elem.style.opacity = 1;
+                    }else{
+                        elem.style.opacity = 0;
+                    }
+               });
+            });
+            
+            //input type이 file시 이미지 가져오기
+            let uploadImg = document.getElementById('realImg');
+            let appendImg = document.getElementById('showFileImg');
+            
+            uploadImg.onchange = function (e) {
+                e.preventDefault();
+                
+                let file = uploadImg.files[0],
+                    reader = new FileReader();
+                
+                reader.onload = function (event){
+                    let img = new Image();
+                    img.src = event.target.result;
+                    
+//                    //이미지 크기
+//                    if(img.width > 175){
+//                        console.log("overflow!");
+//                        img.width = 175;
+//                    }
+                    
+                    appendImg.innerHTML = '';
+                    appendImg.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+                
+                return false;
+            };
+        </script>
+    </body>
+</html>
+    
+    
+    
+    
