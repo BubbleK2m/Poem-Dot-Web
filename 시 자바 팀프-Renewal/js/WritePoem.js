@@ -41,7 +41,7 @@ const writePoem = (title, content, alignment) => {
     addPoem(title, content, alignment, (result) => {
         if (result) {
             alert('시 작성 성공');
-            location.href = './MainPage.html';
+            location.href = './MyPage.html';
         } else {
             alert('시 작성 실패');
         }
@@ -51,8 +51,8 @@ const writePoem = (title, content, alignment) => {
 writeBtn.onclick = (e) => {
     let title = titleForm.value;
     let content = contentForm.value;
-    
-    if (!title || !alignment) {
+
+    if (!title || !content) {
         alert('값이 입력되지 않음');
         return;
     }

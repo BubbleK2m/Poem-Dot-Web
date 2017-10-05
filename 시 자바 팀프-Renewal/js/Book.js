@@ -41,11 +41,11 @@ let bookElement = bookCover.querySelector('#poemCover');
 function showBook(id) {
     readBook(id, (result, book) => {
         if (result) {
-            let pictureNum = id > 7 ? id % 7 + 1 : 7 % id + 1;
+            let pictureNum = id <= 4 ? id : id % 4;
 
             bookElement.innerHTML =
                 `<h1>시집 '${book.title}'</h1>
-                <img src = "../imgs/poemTest${pictureNum}.jpg" class = "backImg">
+                <img src = "../imgs/book${pictureNum}.gif" class = "backImg">
                 <div id = "poemPart">
                     <h2>${book.title}</h2>
                     <h2 id = "author">${book.writer}</h2>
@@ -72,11 +72,11 @@ function showPoemsAtBook(id) {
                 let poemElement = document.createElement('div');
                 poemElement.setAttribute('class', 'poemsCover');
 
-                let pictureNum = poem.id < 5 ? 5 % poem.id : poem.id % 5 + 1;
+                let pictureNum = poem.id <= 5 ? poem.id : poem.id % 5;
 
                 let poemContent = 
                     `<!-- 시 배경 이미지 class -->
-                    <img src = "../imgs/poem${pictureNum}.jpg" class = "poemImgs">
+                    <img src = "../imgs/poem${pictureNum}.png" class = "poemImgs">
                     <div class = "poemsContent">
                         <h1>${poem.title}</h1>
                         <h2>${poem.writer}</h2>

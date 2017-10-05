@@ -30,8 +30,8 @@ const showPoem = (id) => {
             let poemImg = document.createElement('img')
             poemImg.setAttribute('class', 'poemImg');
         
-            let pictureNum = id > 5 ? id % 5 + 1 : 5 % id + 1;
-            poemImg.setAttribute('src', `../imgs/poem${pictureNum}.jpg`);
+            let pictureNum = id <= 5 ? id : id % 5;
+            poemImg.setAttribute('src', `../imgs/poem${pictureNum}.png`);
 
             imageCover.appendChild(poemImg);
         

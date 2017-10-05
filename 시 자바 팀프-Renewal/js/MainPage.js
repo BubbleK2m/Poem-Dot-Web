@@ -78,7 +78,7 @@ function showHeartedBooks(page, length) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'likePoems');   
                 
-                let pictureNum = book.id > 7 ? book.id % 7 + 1 : 7 % book.id + 1;
+                let pictureNum = book.id <= 7 ? book.id : book.id % 7;
 
                 let bookContent = 
                     `<div class = "likePoemPics" style="background-image: url(../imgs/poemTest${pictureNum}.jpg)">
@@ -135,7 +135,7 @@ function showPopularBooks (page, length) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'recommendPoems');
 
-                let pictureNum = book.id > 7 ? book.id % 7 + 1 : 7 % book.id + 1;
+                let pictureNum = book.id < 8 ? 8 % book.id + 1 : book.id % 8 + 1;
 
                 let bookContent = 
                     `<div class = "recommendPoemPics" style="background-image: url(../imgs/poemTest${pictureNum}.jpg)">
