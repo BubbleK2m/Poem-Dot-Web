@@ -41,7 +41,7 @@ let bookElement = bookCover.querySelector('#poemCover');
 function showBook(id) {
     readBook(id, (result, book) => {
         if (result) {
-            let pictureNum = id <= 4 ? id : id % 4;
+            let pictureNum = id % 4 === 0 ? 4 : id % 4;
 
             bookElement.innerHTML =
                 `<h1>시집 '${book.title}'</h1>
@@ -72,7 +72,7 @@ function showPoemsAtBook(id) {
                 let poemElement = document.createElement('div');
                 poemElement.setAttribute('class', 'poemsCover');
 
-                let pictureNum = poem.id <= 5 ? poem.id : poem.id % 5;
+                let pictureNum = poem.id % 5 === 0 ? 5 : poem.id % 5;
 
                 let poemContent = 
                     `<!-- 시 배경 이미지 class -->
@@ -100,6 +100,22 @@ function showPoemsAtBook(id) {
         }
     });
 }
+
+document.getElementById('mainPageLnk').onclick = (e) => {
+    location.href = './MainPage.html';
+};
+
+document.getElementById('myPageLnk').onclick = (e) => {
+    location.href = './MyPage.html';
+};
+
+document.getElementById('logoutLnk').onclick = (e) => {
+    if (localStorage.getItem('Poem-Session-Key')) {
+        localStorage.setItem('Poem-Session-Key', '');
+    }
+
+    location.href = './Landing.html';
+};
 
 showBook(localStorage.getItem('Poem-Book-Id'));
 showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));

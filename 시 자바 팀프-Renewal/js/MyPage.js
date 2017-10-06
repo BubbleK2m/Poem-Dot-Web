@@ -1,3 +1,23 @@
+function readMyInfo(callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let response = JSON.parse(xhr.responseText);
+                callback(true, response);
+            } else {
+                callback(false, null);
+            }
+        }
+    };
+
+    xhr.open('GET', 'http://52.43.254.152/member', true);
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+
+    xhr.send(null);
+}
+
 function readMyPoems(callback) {
     let xhr = new XMLHttpRequest();
 
@@ -41,13 +61,13 @@ function readMyBooks(page, length, callback) {
 const showMyPoems = () => {
     readMyPoems((result, poems) => {
         if (result) {
-            let poemsCover = document.getElementById('selectPoemCover');
+            let poemsCover = document.getElementById('selectPoemsCover');
 
             for (let poem of poems) {
                 let poemElement = document.createElement('div');
                 poemElement.setAttribute('class', 'selectPoems');
                 
-                let pictureNum = poem.id <= 5 ? poem.id : poem.id % 5;
+                let pictureNum = poem.id % 5 === 0 ? 5 : poem.id % 5;
                 poemElement.style.backgroundImage = `url(../imgs/poem${pictureNum}.png)`;
             
                 let poemTitle = document.createElement('div');
@@ -98,7 +118,7 @@ const showMyBooks = (page, length) => {
                 let realImg = document.createElement('img');
                 realImg.setAttribute('class', 'realImgs');
 
-                let pictureNum = book.id <= 4 ? book.id : book.id % 4;
+                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
                 realImg.setAttribute('src', `../imgs/book${pictureNum}.gif`);
     
                 bookImg.appendChild(realImg);
@@ -122,6 +142,13 @@ const showMyBooks = (page, length) => {
     
                 bookElement.appendChild(bookContent);
 
+                bookElement.onclick = (((book) => {
+                    return (e) => {
+                        localStorage.setItem('Poem-Book-Id', book.id);
+                        location.href = './Book.html';
+                    };
+                })(book))
+
                 let bookCover;
 
                 if ((i + 1) % 2 === 1) {
@@ -139,6 +166,22 @@ const showMyBooks = (page, length) => {
             moreBooksBtn.style.display = 'none';
         }
     });
+};
+
+document.getElementById('mainPageLnk').onclick = (e) => {
+    location.href = './MainPage.html';
+};
+
+document.getElementById('myPageLnk').onclick = (e) => {
+    location.href = './MyPage.html';
+};
+
+document.getElementById('logoutLnk').onclick = (e) => {
+    if (localStorage.getItem('Poem-Session-Key')) {
+        localStorage.setItem('Poem-Session-Key', '');
+    }
+
+    location.href = './Landing.html';
 };
 
 document.getElementById('createNewPoem').onclick = (e) => {

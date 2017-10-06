@@ -1,9 +1,3 @@
-let heartedBookCover = document.getElementById('likePoemCover');
-let seeHeartedMoreCover = document.getElementById('seeLikeMoreCover');
-
-let recommendBookCover = document.getElementById('recommendPoemCover');
-let seeRecommendMoreCover = document.getElementById('seeRecommendMoreCover');
-
 function readMyBooks (page, length, callback) {
     let xhr = new XMLHttpRequest();
 
@@ -62,8 +56,10 @@ function readPopularBooks(page, length, callback) {
     xhr.send(null);
 }
 
-function showHeartedBooks(page, length) {
+const showHeartedBooks = (page, length) => {
     readHeartedBooks(page, length, (result, books) => {
+        let seeHeartedMoreCover = document.getElementById('seeLikeMoreCover');
+
         if (result) {
             if (books.length < 3) {
                 seeHeartedMoreCover.style.display = 'none';
@@ -74,14 +70,16 @@ function showHeartedBooks(page, length) {
                 };
             }
 
+            let heartedBookCover = document.getElementById('likePoemCover');
+
             for (let book of books) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'likePoems');   
                 
-                let pictureNum = book.id <= 7 ? book.id : book.id % 7;
+                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
 
                 let bookContent = 
-                    `<div class = "likePoemPics" style="background-image: url(../imgs/poemTest${pictureNum}.jpg)">
+                    `<div class = "likePoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "likeAuthor">
@@ -119,8 +117,10 @@ function showHeartedBooks(page, length) {
     });
 }
 
-function showPopularBooks (page, length) {
+const showPopularBooks = (page, length) => {
     readPopularBooks(page, length, (result, books) => {
+        let seeRecommendMoreCover = document.getElementById('seeRecommendMoreCover');
+
         if (result) {
             if (books.length < 3) {
                 seeRecommendMoreCover.style.display = 'none';
@@ -131,14 +131,16 @@ function showPopularBooks (page, length) {
                 };
             }
 
+            let recommendBookCover = document.getElementById('recommendPoemCover');
+
             for (let book of books) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'recommendPoems');
 
-                let pictureNum = book.id < 8 ? 8 % book.id + 1 : book.id % 8 + 1;
+                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
 
                 let bookContent = 
-                    `<div class = "recommendPoemPics" style="background-image: url(../imgs/poemTest${pictureNum}.jpg)">
+                    `<div class = "recommendPoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "recommendAuthor">
@@ -171,10 +173,26 @@ function showPopularBooks (page, length) {
                 recommendBookCover.appendChild(bookElement);
             }
         } else {
-            seeHeartedMoreCover.style.display = 'none';
+            seeRecommendMoreCover.style.display = 'none';
         }
     });
 }
+
+document.getElementById('mainPageLnk').onclick = (e) => {
+    location.href = './MainPage.html';
+};
+
+document.getElementById('myPageLnk').onclick = (e) => {
+    location.href = './MyPage.html';
+};
+
+document.getElementById('logoutLnk').onclick = (e) => {
+    if (localStorage.getItem('Poem-Session-Key')) {
+        localStorage.setItem('Poem-Session-Key', '');
+    }
+
+    location.href = './Landing.html';
+};
 
 showHeartedBooks(1, 3);
 showPopularBooks(1, 3);
