@@ -30,8 +30,8 @@ const showPoemsAtMember = () => {
                 poemElement.className = 'selectPoems';
                 poemElement.title = poem.title;
                 
-                let pictureNum = poem.id > 5 ? poem.id % 5 + 1 : 5 % poem.id + 1;
-                poemElement.style.backgroundImage = `url(../imgs/poem${pictureNum}.jpg)`;
+                let pictureNum = poem.id % 5 === 0 ? 5 : poem.id % 5;
+                poemElement.style.backgroundImage = `url(../imgs/poem${pictureNum}.png)`;
 
                 let poemCover = document.createElement('div');
                 poemCover.setAttribute('class', 'blackCover');
@@ -84,7 +84,7 @@ function addBook(title, poems, callback) {
         }
     };
 
-    xhr.open('POST', 'http://52.43.254.152/book', true);
+    xhr.open('POST', 'http://52.43.254.152/book', false);
 
     xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -96,7 +96,7 @@ const publishBook = (title, poems) => {
     addBook(title, poems, (result) => {
         if (result) {
             alert('시집 등록 성공');
-            localtion.href = './MainPage.html';
+            location.href = './MyPage.html';
         } else {
             alert('시집 등록 실패');
         }

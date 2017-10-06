@@ -13,7 +13,7 @@ function addPoem(title, content, alignment, callback) {
         }
     };
 
-    xhr.open('POST', 'http://52.43.254.152/poem', true);
+    xhr.open('POST', 'http://52.43.254.152/poem', false);
     
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'))

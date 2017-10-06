@@ -97,7 +97,7 @@ const showPoem = (id) => {
                 };
             } else {
                 listBtn.onclick = (e) => {
-                    location.href = './Book.html';
+                    location.href = './MyPage.html';
                 };
             }
         
