@@ -144,15 +144,16 @@ p:nth-of-type(1) {
 
 #listBtn {
     font-size: 1rem;
-    margin-top: 5.75rem;
     color: #292929;
     letter-spacing: 1px;
-    margin-left: -3.25rem;
     border-bottom: 1px solid #505050;
     width: 3rem;
     height: 1.5rem;
-    text-align: center;
     cursor: pointer;
+    position:absolute;
+    right:2rem;
+    text-align: center;
+    top:10rem;
 }
 
 
