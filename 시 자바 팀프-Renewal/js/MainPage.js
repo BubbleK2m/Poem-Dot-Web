@@ -76,6 +76,11 @@ const showMyPopularBook = () => {
                 let bookHearts = bookCover.querySelector('#thumbCnt');
                 bookHearts.innerText = book.hearts;
                 
+                let bookImage = document.getElementById('bookImg');
+                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
+                
+                bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+
                 let showMoreBtn = document.getElementById('showMore');
                 showMoreBtn.onclick = (((book) => {
                     return (e) => {
