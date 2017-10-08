@@ -205,6 +205,10 @@ const showMyBooks = (page, length) => {
     });
 };
 
+document.getElementById('mainLogo').onclick = (e) => {
+    location.href = './MainPage.html';
+}
+
 document.getElementById('mainPageLnk').onclick = (e) => {
     location.href = './MainPage.html';
 };
