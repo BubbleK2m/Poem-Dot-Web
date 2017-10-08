@@ -99,11 +99,31 @@ const showBooksByWord = (word) => {
     });
 }
 
+document.getElementById('mainLogo').onclick = (e) => {
+    location.href = './MainPage.html';
+}
+
+document.getElementById('mainPageLnk').onclick = (e) => {
+    location.href = './MainPage.html';
+};
+
+document.getElementById('myPageLnk').onclick = (e) => {
+    location.href = './MyPage.html';
+};
+
+document.getElementById('logoutLnk').onclick = (e) => {
+    if (localStorage.getItem('Poem-Session-Key')) {
+        localStorage.setItem('Poem-Session-Key', '');
+    }
+
+    location.href = './Landing.html';
+};
+
 document.getElementById('searchBtn').onclick = (e) => {
     let word = document.getElementById('searchText').value;
 
     if (word) {
-        localStorage('Poem-Search-Word', word);
+        localStorage.setItem('Poem-Search-Word', word);
         location.href = './Search.html';
     } else {
         alert('검색어를 입력하세요');
