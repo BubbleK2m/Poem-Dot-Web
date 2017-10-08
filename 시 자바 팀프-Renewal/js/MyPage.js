@@ -58,6 +58,29 @@ function readMyBooks(page, length, callback) {
     xhr.send(null);
 }
 
+const showMyInfo = () => {
+    readMyInfo((result, me) => {
+        if (result) {
+            let myCover = document.getElementById('poemPart');
+            
+            let myName = myCover.querySelector('#author');
+            myName.innerText = `필명: ${me.name}`;
+
+            let myEmail = myCover.querySelector('#authorEmail');
+            myEmail.innerText = `이메일: ${me.email}`;
+
+            let myPoemsCnt = myCover.querySelector('#poemsCnt');
+            myPoemsCnt.innerText = `시: ${me.poems}개`;
+
+            let myBooksCnt = myCover.querySelector('#booksCnt');
+            myBooksCnt.innerText = `시집: ${me.books}권`;
+        } else {
+            alert('내 정보를 불러올 수 없습니다');
+            location.href = 'Landing.html';
+        }
+    });
+}
+ 
 const showMyPoems = () => {
     readMyPoems((result, poems) => {
         if (result) {
@@ -192,5 +215,6 @@ document.getElementById('createNewBook').onclick = (e) => {
     location.href = './PublishBook.html';
 };
 
+showMyInfo();
 showMyPoems();
 showMyBooks(1, 2);
