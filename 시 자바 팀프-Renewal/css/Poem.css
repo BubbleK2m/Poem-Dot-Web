@@ -104,6 +104,8 @@ ul img {
 
 .twoParts#textPart {
     padding-left: 2rem;
+    padding-bottom: 15rem;
+    overflow-y: auto; 
 }
 
 .poemImg {

@@ -88,6 +88,7 @@ function signup(email, password, name, callback) {
     xhr.onreadystatechange = (e) => {
         if (xhr.readyState === 4) {
             if (xhr.status === 201) {
+                localStorage.setItem('Poem-Session-Key', xhr.getResponseHeader('Poem-Session-Key'))
                 callback(true);
             } else {
                 callback(false);
@@ -169,6 +170,7 @@ signupBtn.onclick = (e) => {
     signup(email, passwords[0], name, (result) => {
         if (result) {
             alert('회원가입 성공');
+            location.href = './MainPage.html';
         } else {
             alert('회원가입 실패');
         }

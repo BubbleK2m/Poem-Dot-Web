@@ -194,4 +194,3 @@ document.getElementById('createNewBook').onclick = (e) => {
 
 showMyPoems();
 showMyBooks(1, 2);
-showMyBooks(2, 2);
