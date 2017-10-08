@@ -106,6 +106,7 @@ ul img {
     padding-left: 2rem;
     padding-bottom: 15rem;
     overflow-y: auto; 
+    margin-top:-3rem;
 }
 
 .poemImg {

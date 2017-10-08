@@ -201,9 +201,15 @@ h2#explain {
     cursor: pointer;
 }
 
+.hideCover{
+    width:100%;
+    height:30rem;
+    overflow:hidden;
+}
+
 #likePoemCover {
     width: 100%;
-    height: 30rem;
+    height: 32rem;
     text-align: center;
     overflow-y: auto;
 }
