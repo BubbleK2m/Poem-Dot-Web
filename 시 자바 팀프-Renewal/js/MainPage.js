@@ -1,18 +1,18 @@
-function readMyBooks (page, length, callback) {
+function readMyPopularBook (callback) {
     let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = (e) => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 let response = JSON.parse(xhr.responseText);
-                callback(true, response.data);
+                callback(true, response);
             } else {
                 callback(false, null);
             }
         }
     };
 
-    xhr.open('GET', `http://52.43.254.152/member/books?page=${page}&length=${length}`, true);
+    xhr.open('GET', `http://52.43.254.152/member/book/popular`, true);
     xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
     
     xhr.send(null);
@@ -55,6 +55,37 @@ function readPopularBooks(page, length, callback) {
     xhr.open('GET', `http://52.43.254.152/books/popular?page=${page}&length=${length}`, true);
     xhr.send(null);
 }
+
+const showMyPopularBook = () => {
+    readMyPopularBook((result, book) => {
+        if (result) {
+            let bookCover = document.getElementById('poemPart');
+
+            let bookTitle = bookCover.querySelector('#title');
+            bookTitle.innerText = book.title;
+
+            let bookWriter = bookCover.querySelector('#author');
+            bookWriter.innerText = book.writer;
+
+            let bookExplain = bookCover.querySelector('#explain');
+            bookExplain.innerText = `${book.writer} 의 시집입니다.`;
+
+            let bookHearts = bookCover.querySelector('#thumbCnt');
+            bookHearts.innerText = book.hearts;
+
+            let showMoreBtn = document.getElementById('showMore');
+            showMoreBtn.onclick = (((book) => {
+                return (e) => {
+                    localStorage.setItem('Poem-Book-Id', book.id);
+                    location.href = './Book.html';
+                };
+            })(book));
+        } else {
+            alert('회원 정보를 조회할 수 없습니다.');
+            location.href = './Landing.html';
+        }
+    });
+};
 
 const showHeartedBooks = (page, length) => {
     readHeartedBooks(page, length, (result, books) => {
@@ -194,5 +225,6 @@ document.getElementById('logoutLnk').onclick = (e) => {
     location.href = './Landing.html';
 };
 
+showMyPopularBook();
 showHeartedBooks(1, 3);
 showPopularBooks(1, 3);
