@@ -14,6 +14,26 @@ body {
     vertical-align: top;
 }
 
+*::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
 header {
     width: 100%;
     height: 6rem;
@@ -143,10 +163,11 @@ h2#explain {
 
 #showMoreText {
     position: absolute;
-    right: 3.1rem;
+    right: 3.5rem;
     color: white;
     font-family: 'nanumsquare';
     top: 17.5rem;
+    letter-spacing: 2px;
 }
 
 #showMore {
@@ -260,12 +281,12 @@ h2#explain {
     height: 100%;
     opacity: 0;
     transition: 0.5s;
+    cursor:pointer !important;
 }
 
 .hoverAnim:hover {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.8);
-    cursor: default;
 }
 
 .hoverAnim p {
