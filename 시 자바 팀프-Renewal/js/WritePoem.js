@@ -69,5 +69,5 @@ writeBtn.onclick = (e) => {
         alignment = 1;
     }
 
-    writePoem(title, content, alignment);
+    writePoem(title, encodeURIComponent(content), alignment);
 };

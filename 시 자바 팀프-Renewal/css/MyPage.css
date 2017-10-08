@@ -177,7 +177,7 @@ h1 {
     padding-top: 5rem;
 }
 
-#selectPoemsCover {
+.poemCover {
     text-align: center;
     vertical-align: top;
     margin-top: 3rem;

@@ -84,9 +84,11 @@ const showMyInfo = () => {
 const showMyPoems = () => {
     readMyPoems((result, poems) => {
         if (result) {
-            let poemsCover = document.getElementById('selectPoemsCover');
+            let poemsCover = document.getElementById('poemsCover');
 
-            for (let poem of poems) {
+            for (i = 0; i < poems.length; i++) {
+                let poem = poems[i];
+
                 let poemElement = document.createElement('div');
                 poemElement.setAttribute('class', 'selectPoems');
                 
@@ -105,7 +107,19 @@ const showMyPoems = () => {
                 })(poem));
     
                 poemElement.appendChild(poemTitle);
-                poemsCover.appendChild(poemElement);
+                
+                let poemCover;
+
+                if ((i + 1) % 5 === 1) {
+                    poemCover = document.createElement('div');
+                    poemCover.setAttribute('class', 'poemCover');
+
+                    poemCover.appendChild(poemElement);
+                    poemsCover.appendChild(poemCover);
+                } else {
+                    poemCover = document.getElementsByClassName('poemCover')[Math.trunc(i / 5)];
+                    poemCover.appendChild(poemElement);
+                }
             }
         } else {   
         }
@@ -181,7 +195,7 @@ const showMyBooks = (page, length) => {
                     bookCover.appendChild(bookElement);
                     booksCover.appendChild(bookCover);
                 } else {
-                    bookCover = document.getElementsByClassName('bookCover')[(i + 1) / 2 - 1];
+                    bookCover = document.getElementsByClassName('bookCover')[Math.trunc(i / 2)];
                     bookCover.appendChild(bookElement);
                 }
             }
@@ -190,6 +204,10 @@ const showMyBooks = (page, length) => {
         }
     });
 };
+
+document.getElementById('mainLogo').onclick = (e) => {
+    location.href = './MainPage.html';
+}
 
 document.getElementById('mainPageLnk').onclick = (e) => {
     location.href = './MainPage.html';
