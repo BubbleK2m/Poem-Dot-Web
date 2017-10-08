@@ -59,36 +59,25 @@ function readPoemsAtBook(id, callback) {
 const showPoem = (id) => {
     readPoem(id, (result, poem) => {
         if (result) {
-            let poemCover = document.getElementById('seePoemCover');
 
-            let imageCover = document.createElement('div');
-            imageCover.setAttribute('class', 'twoParts');
-            imageCover.setAttribute('id', 'imgPart');
-        
-            let poemImg = document.createElement('img')
-            poemImg.setAttribute('class', 'poemImg');
+            let imageCover = document.getElementById('imgPart');
+            let poemImage = imageCover.querySelector('.poemImg');
         
             let pictureNum = id % 5 === 0 ? 5 : id % 5;
-            poemImg.setAttribute('src', `../imgs/poem${pictureNum}.png`);
-
-            imageCover.appendChild(poemImg);
+            poemImage.setAttribute('src', `../imgs/poem${pictureNum}.png`);
         
-            let contentCover = document.createElement('div');
-            contentCover.setAttribute('class', 'twoParts');
-            contentCover.setAttribute('id', 'textPart');
+            let contentCover = document.getElementById('textPart');
         
-            let poemTitle = document.createElement('h1');
+            let poemTitle = contentCover.querySelector('#poemTitle');
             poemTitle.innerText = poem.title;
         
-            let poemWriter= document.createElement('h2');
+            let poemWriter= contentCover.querySelector('#poemWriter');
             poemWriter.innerText = poem.writer;
         
-            let poemContent = document.createElement('p');
+            let poemContent = contentCover.querySelector('#poemContent');
             poemContent.innerHTML = poem.content.split('\n').join('<br>');
         
-            let listBtn = document.createElement('div');
-            listBtn.setAttribute('id', 'listBtn');
-            listBtn.innerText = '목록';
+            let listBtn = contentCover.querySelector('#listBtn');
             
             if (poem.book !== 0) {
                 listBtn.onclick = (e) => {
@@ -100,14 +89,6 @@ const showPoem = (id) => {
                     location.href = './MyPage.html';
                 };
             }
-        
-            contentCover.appendChild(poemTitle);
-            contentCover.appendChild(poemWriter);
-            contentCover.appendChild(poemContent);
-            contentCover.appendChild(listBtn);
-            
-            poemCover.appendChild(imageCover);
-            poemCover.appendChild(contentCover);
 
             let poemIds = localStorage.getItem('Poem-Poem-Poems');
 
