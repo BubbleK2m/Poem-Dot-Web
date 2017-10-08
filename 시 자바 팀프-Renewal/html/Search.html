@@ -14,29 +14,27 @@
                 <li><a>메인</a></li>
                 <li><a>마이페이지</a></li>
                 <li><a>로그아웃</a></li>
-                <li><input type = "text" placeholder="검색어 입력"></li>
-                <img src = "../imgs/searchImg.png" style = "margin-top:-4px">
+                <li><input type = "text" placeholder="검색어 입력" id='searchText'></li>
+                <img src = "../imgs/searchImg.png" id='searchBtn' style = "margin-top:-4px">
             </ul>
         </header>
         
         <h1>
             입력한 검색어는 " 
             <span id = "searchedText">
-                윤동주 시집
             </span>
             " 입니다.
         </h1>
         <h2>
             관련된
             <span id = "searchedCnt">
-                5
             </span>
             개의 검색 결과가 있습니다.
         </h2>
         
         <div id = "searchCover">
             <!-- searches 반복임 -->
-            <div class = "searches">
+            <!--<div class = "searches">
                 <div class = "searchPicPart">
                     <img src = "../imgs/poem1.png" class = "searchImgs">
                 </div>
@@ -83,7 +81,7 @@
                 </div>
                 <div class = "searchBtns">
                     <div class = "searchBtnText">
-                        검색하기
+                        보기
                     </div>
                 </div>
             </div>
@@ -164,12 +162,14 @@
                         검색하기
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         
         <footer>
             
         </footer>
+
+        <script type='text/javascript' src='../js/Search.js'></script>
     </body>
 </html>
     

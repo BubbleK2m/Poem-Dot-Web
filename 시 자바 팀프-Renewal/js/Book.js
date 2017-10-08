@@ -121,5 +121,16 @@ document.getElementById('logoutLnk').onclick = (e) => {
     location.href = './Landing.html';
 };
 
+document.getElementById('searchBtn').onclick = (e) => {
+    let word = document.getElementById('searchText').value;
+
+    if (word) {
+        localStorage.setItem('Poem-Search-Word', word);
+        location.href = './Search.html';
+    } else {
+        alert('검색어를 입력하세요');
+    }
+};
+
 showBook(localStorage.getItem('Poem-Book-Id'));
 showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));
