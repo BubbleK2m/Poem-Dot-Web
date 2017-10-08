@@ -6,6 +6,8 @@ function readMyPopularBook (callback) {
             if (xhr.status === 200) {
                 let response = JSON.parse(xhr.responseText);
                 callback(true, response);
+            } else if (xhr.status === 204) {
+                callback(true, null);
             } else {
                 callback(false, null);
             }
@@ -59,27 +61,29 @@ function readPopularBooks(page, length, callback) {
 const showMyPopularBook = () => {
     readMyPopularBook((result, book) => {
         if (result) {
-            let bookCover = document.getElementById('poemPart');
-
-            let bookTitle = bookCover.querySelector('#title');
-            bookTitle.innerText = book.title;
-
-            let bookWriter = bookCover.querySelector('#author');
-            bookWriter.innerText = book.writer;
-
-            let bookExplain = bookCover.querySelector('#explain');
-            bookExplain.innerText = `${book.writer} 의 시집입니다.`;
-
-            let bookHearts = bookCover.querySelector('#thumbCnt');
-            bookHearts.innerText = book.hearts;
-
-            let showMoreBtn = document.getElementById('showMore');
-            showMoreBtn.onclick = (((book) => {
-                return (e) => {
-                    localStorage.setItem('Poem-Book-Id', book.id);
-                    location.href = './Book.html';
-                };
-            })(book));
+            if (book) {
+                let bookCover = document.getElementById('poemPart');
+                
+                let bookTitle = bookCover.querySelector('#title');
+                bookTitle.innerText = book.title;
+                
+                let bookWriter = bookCover.querySelector('#author');
+                bookWriter.innerText = book.writer;
+                
+                let bookExplain = bookCover.querySelector('#explain');
+                bookExplain.innerText = `${book.writer} 의 시집입니다.`;
+                
+                let bookHearts = bookCover.querySelector('#thumbCnt');
+                bookHearts.innerText = book.hearts;
+                
+                let showMoreBtn = document.getElementById('showMore');
+                showMoreBtn.onclick = (((book) => {
+                    return (e) => {
+                        localStorage.setItem('Poem-Book-Id', book.id);
+                        location.href = './Book.html';
+                    };
+                })(book));
+            }
         } else {
             alert('회원 정보를 조회할 수 없습니다.');
             location.href = './Landing.html';
