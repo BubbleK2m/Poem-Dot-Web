@@ -80,7 +80,7 @@ function readPoemsAtBook(id, callback) {
 
 let bookElement = bookCover.querySelector('#poemCover');
 
-function showBook(id) {
+const showBook = (id) => {
     readBook(id, (result, book) => {
         if (result) {
             let pictureNum = id % 4 === 0 ? 4 : id % 4;
@@ -106,6 +106,7 @@ function showBook(id) {
                 if (result) {
                     if (heart) {
                         heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+                        
                         heartBtn.onclick = (e) => {
                             editHeartAtBook(id, false, (result) => {
                                 if (result) {
@@ -115,6 +116,7 @@ function showBook(id) {
                         };
                     } else {
                         heartBtn.setAttribute('src', `../imgs/like.png`);
+                        
                         heartBtn.onclick = (e) => {
                             editHeartAtBook(id, true, (result) => {
                                 if (result) {
@@ -134,7 +136,7 @@ function showBook(id) {
 
 let poemsCover = document.getElementById('poemsBack');
 
-function showPoemsAtBook(id) {
+const showPoemsAtBook = (id) => {
     readPoemsAtBook(id, (result, poems) => {
         if (result) {
             for (let poem of poems) {
