@@ -152,12 +152,13 @@ h2#explain {
     margin-top: 1.8rem;
 }
 
-.thumbUp {
+#thumbUp {
     width: 28px;
     display: inline-block;
     vertical-align: top;
     margin-left: 2rem;
     margin-top: 1rem;
+    cursor:pointer;
 }
 
 #thumbCnt {

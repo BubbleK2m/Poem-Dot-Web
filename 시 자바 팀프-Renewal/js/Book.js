@@ -51,11 +51,25 @@ function showBook(id) {
                     <h2 id = "author">${book.writer}</h2>
                     <h2 id = "explain">${book.writer} 의 시집입니다.</h2>
 
-                    <img src = "../imgs/thumbUp.png" class="thumbUp">
+                    <img src = "../imgs/like.png" id="thumbUp">
                     <div id = "thumbCnt">
                         ${book.hearts}
                     </div>
                 </div>`;
+            
+            /* 좋아요 누르는 것 */
+            let cntTest = 1;
+            
+            let likeBtn = document.getElementById('thumbUp');
+            likeBtn.addEventListener('click', () => {
+                if(cntTest % 2 == 1){
+                    likeBtn.src = "../imgs/clickLike.png";
+                }else{
+                    likeBtn.src = "../imgs/like.png";
+                }
+                cntTest++;
+            });
+            
         } else {
             alert('시집을 조회할 수 없음');
             location.href = './MainPage.html';
@@ -134,3 +148,18 @@ document.getElementById('searchBtn').onclick = (e) => {
 
 showBook(localStorage.getItem('Poem-Book-Id'));
 showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
