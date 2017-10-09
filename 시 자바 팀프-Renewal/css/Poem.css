@@ -165,7 +165,7 @@ p:nth-of-type(1) {
     margin-top: 4rem;
 }
 
-#listBtn {
+.listBtn {
     font-size: 1rem;
     color: #292929;
     letter-spacing: 1px;
@@ -179,6 +179,13 @@ p:nth-of-type(1) {
     top:10rem;
 }
 
+#delBtn{
+    right:6rem;
+}
+
+#changeBtn{
+    right:10rem;
+}
 
 /* 전 후 이미지 */
 
