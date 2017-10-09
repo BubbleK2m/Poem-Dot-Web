@@ -15,6 +15,26 @@ body {
     font-family: 'nanumsquare';
 }
 
+*::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
 header {
     width: 100%;
     height: 6rem;
@@ -117,7 +137,7 @@ ul img {
 }
 
 h2#author {
-    margin-top: 9rem;
+    margin-top: 7.5rem;
 }
 
 .thumbUp {
@@ -157,7 +177,7 @@ h1 {
     padding-top: 5rem;
 }
 
-#selectPoemCover {
+.poemCover {
     text-align: center;
     vertical-align: top;
     margin-top: 3rem;
@@ -274,6 +294,7 @@ h1 {
     margin-left: 14rem;
     margin-top: 1rem;
     box-shadow: 0 0 4px darkgray;
+    cursor:pointer;
 }
 
 .books .bookEx {

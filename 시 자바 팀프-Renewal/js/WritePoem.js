@@ -13,7 +13,7 @@ function addPoem(title, content, alignment, callback) {
         }
     };
 
-    xhr.open('POST', 'http://52.43.254.152/poem', true);
+    xhr.open('POST', 'http://52.43.254.152/poem', false);
     
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'))
@@ -37,11 +37,11 @@ Array.from(poemAligns).forEach((elem, index) => {
 
 let writeBtn = writeForm.querySelector('#writeBtn');
 
-function writePoem(title, content, alignment) {
+const writePoem = (title, content, alignment) => {
     addPoem(title, content, alignment, (result) => {
         if (result) {
             alert('시 작성 성공');
-            location.href = './MainPage.html';
+            location.href = './MyPage.html';
         } else {
             alert('시 작성 실패');
         }
@@ -51,7 +51,12 @@ function writePoem(title, content, alignment) {
 writeBtn.onclick = (e) => {
     let title = titleForm.value;
     let content = contentForm.value;
-    
+
+    if (!title || !content) {
+        alert('값이 입력되지 않음');
+        return;
+    }
+
     let alignment = contentForm.style.textAlign;
 
     if (alignment === 'left') {
@@ -64,5 +69,5 @@ writeBtn.onclick = (e) => {
         alignment = 1;
     }
 
-    writePoem(title, content, alignment);
+    writePoem(title, encodeURIComponent(content), alignment);
 };

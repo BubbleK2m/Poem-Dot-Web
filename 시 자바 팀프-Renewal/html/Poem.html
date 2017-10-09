@@ -10,11 +10,11 @@
         <header>
             <div id = "mainLogo">Poem</div>
             <ul>
-                <li><a>메인</a></li>
-                <li><a>마이페이지</a></li>
-                <li><a>로그아웃</a></li>
-                <li><input type = "text" placeholder="검색어 입력"></li>
-                <img src = "../imgs/searchImg.png" style = "margin-top:-4px">
+                <li><a id='mainPageLnk'>메인</a></li>
+                <li><a id='myPageLnk'>마이페이지</a></li>
+                <li><a id='logoutLnk'>로그아웃</a></li>
+                <li><input type = "text" placeholder="검색어 입력" id='searchText'></li>
+                <img src = "../imgs/searchImg.png" id='searchBtn' style = "margin-top:-4px">
             </ul>
         </header>
         
@@ -28,30 +28,18 @@
         
         <div id = "seePoemCover">
             <div class = "twoParts" id = "imgPart">
-                <img src = "../imgs/poem3.jpg" class = "poemImg">
+                <img class = "poemImg">
             </div>
             <div class = "twoParts" id = "textPart">
-                <h1>용서받지 않는 방법</h1>
-                <h2>신여월</h2>
-                <!-- 시 내용 -->
-                <p>
-                    내가 용서받지 않는 방법 <br>
-                    그리고 당신이 용서받지 않는 방법
-                </p>
-                <p>
-                    내가 사랑받지 않는 방법 <br>
-                    그리고 당신이 사랑받지 않는 방법
-                </p>
-                <p>
-                    당신을 잃지 않는 방법 <br>
-                    나를 잃지 않는 방법
-                </p>
-                
+                <h1 id = 'poemTitle'></h1>
+                <h2 id = 'poemWriter'></h2>
+                <p id = 'poemContent'></p>
                 <div id = "listBtn">
                     목록
                 </div>
             </div>
         </div>
         
+        <script type="text/javascript" src="../js/Poem.js"></script>
     </body>
 </html>

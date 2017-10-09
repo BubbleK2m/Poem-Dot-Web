@@ -41,21 +41,35 @@ let bookElement = bookCover.querySelector('#poemCover');
 function showBook(id) {
     readBook(id, (result, book) => {
         if (result) {
-            let pictureNum = id > 7 ? id % 7 + 1 : 7 % id + 1;
+            let pictureNum = id % 4 === 0 ? 4 : id % 4;
 
             bookElement.innerHTML =
                 `<h1>시집 '${book.title}'</h1>
-                <img src = "../imgs/poemTest${pictureNum}.jpg" class = "backImg">
+                <img src = "../imgs/book${pictureNum}.gif" class = "backImg">
                 <div id = "poemPart">
                     <h2>${book.title}</h2>
                     <h2 id = "author">${book.writer}</h2>
                     <h2 id = "explain">${book.writer} 의 시집입니다.</h2>
 
-                    <img src = "../imgs/thumbUp.png" class="thumbUp">
+                    <img src = "../imgs/like.png" id="thumbUp">
                     <div id = "thumbCnt">
                         ${book.hearts}
                     </div>
                 </div>`;
+            
+            /* 좋아요 누르는 것 */
+            let cntTest = 1;
+            
+            let likeBtn = document.getElementById('thumbUp');
+            likeBtn.addEventListener('click', () => {
+                if(cntTest % 2 == 1){
+                    likeBtn.src = "../imgs/clickLike.png";
+                }else{
+                    likeBtn.src = "../imgs/like.png";
+                }
+                cntTest++;
+            });
+            
         } else {
             alert('시집을 조회할 수 없음');
             location.href = './MainPage.html';
@@ -72,11 +86,11 @@ function showPoemsAtBook(id) {
                 let poemElement = document.createElement('div');
                 poemElement.setAttribute('class', 'poemsCover');
 
-                let pictureNum = poem.id < 5 ? 5 % poem.id : poem.id % 5 + 1;
+                let pictureNum = poem.id % 5 === 0 ? 5 : poem.id % 5;
 
                 let poemContent = 
                     `<!-- 시 배경 이미지 class -->
-                    <img src = "../imgs/poem${pictureNum}.jpg" class = "poemImgs">
+                    <img src = "../imgs/poem${pictureNum}.png" class = "poemImgs">
                     <div class = "poemsContent">
                         <h1>${poem.title}</h1>
                         <h2>${poem.writer}</h2>
@@ -84,6 +98,14 @@ function showPoemsAtBook(id) {
                     </div>`;
 
                 poemElement.innerHTML = poemContent;
+
+                poemElement.onclick = (((poem) => {
+                    return (e) => {
+                        localStorage.setItem('Poem-Poem-Id', poem.id);
+                        location.href = './Poem.html';
+                    };
+                })(poem));
+
                 poemsCover.appendChild(poemElement);
             }
         } else {
@@ -93,5 +115,51 @@ function showPoemsAtBook(id) {
     });
 }
 
+document.getElementById('mainLogo').onclick = (e) => {
+    location.href = './MainPage.html';
+}
+
+document.getElementById('mainPageLnk').onclick = (e) => {
+    location.href = './MainPage.html';
+};
+
+document.getElementById('myPageLnk').onclick = (e) => {
+    location.href = './MyPage.html';
+};
+
+document.getElementById('logoutLnk').onclick = (e) => {
+    if (localStorage.getItem('Poem-Session-Key')) {
+        localStorage.setItem('Poem-Session-Key', '');
+    }
+
+    location.href = './Landing.html';
+};
+
+document.getElementById('searchBtn').onclick = (e) => {
+    let word = document.getElementById('searchText').value;
+
+    if (word) {
+        localStorage.setItem('Poem-Search-Word', word);
+        location.href = './Search.html';
+    } else {
+        alert('검색어를 입력하세요');
+    }
+};
+
 showBook(localStorage.getItem('Poem-Book-Id'));
 showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

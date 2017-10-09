@@ -1,24 +1,20 @@
-let heartedBookCover = document.getElementById('likePoemCover');
-let seeHeartedMoreCover = document.getElementById('seeLikeMoreCover');
-
-let recommendBookCover = document.getElementById('recommendPoemCover');
-let seeRecommendMoreCover = document.getElementById('seeRecommendMoreCover');
-
-function readMyBooks (page, length, callback) {
+function readMyPopularBook (callback) {
     let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = (e) => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 let response = JSON.parse(xhr.responseText);
-                callback(true, response.data);
+                callback(true, response);
+            } else if (xhr.status === 204) {
+                callback(true, null);
             } else {
                 callback(false, null);
             }
         }
     };
 
-    xhr.open('GET', `http://52.43.254.152/member/books?page=${page}&length=${length}`, true);
+    xhr.open('GET', `http://52.43.254.152/member/book/popular`, true);
     xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
     
     xhr.send(null);
@@ -62,8 +58,48 @@ function readPopularBooks(page, length, callback) {
     xhr.send(null);
 }
 
-function showHeartedBooks(page, length) {
+const showMyPopularBook = () => {
+    readMyPopularBook((result, book) => {
+        if (result) {
+            if (book) {
+                let bookCover = document.getElementById('poemPart');
+                
+                let bookTitle = bookCover.querySelector('#title');
+                bookTitle.innerText = book.title;
+                
+                let bookWriter = bookCover.querySelector('#author');
+                bookWriter.innerText = book.writer;
+                
+                let bookExplain = bookCover.querySelector('#explain');
+                bookExplain.innerText = `${book.writer} 의 시집입니다.`;
+                
+                let bookHearts = bookCover.querySelector('#thumbCnt');
+                bookHearts.innerText = book.hearts;
+                
+                let bookImage = document.getElementById('bookImg');
+                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
+                
+                bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+
+                let showMoreBtn = document.getElementById('showMore');
+                showMoreBtn.onclick = (((book) => {
+                    return (e) => {
+                        localStorage.setItem('Poem-Book-Id', book.id);
+                        location.href = './Book.html';
+                    };
+                })(book));
+            }
+        } else {
+            alert('회원 정보를 조회할 수 없습니다.');
+            location.href = './Landing.html';
+        }
+    });
+};
+
+const showHeartedBooks = (page, length) => {
     readHeartedBooks(page, length, (result, books) => {
+        let seeHeartedMoreCover = document.getElementById('seeLikeMoreCover');
+
         if (result) {
             if (books.length < 3) {
                 seeHeartedMoreCover.style.display = 'none';
@@ -74,14 +110,16 @@ function showHeartedBooks(page, length) {
                 };
             }
 
+            let heartedBookCover = document.getElementById('likePoemCover');
+
             for (let book of books) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'likePoems');   
                 
-                let pictureNum = book.id > 7 ? book.id % 7 + 1 : 7 % book.id + 1;
+                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
 
                 let bookContent = 
-                    `<div class = "likePoemPics" style="background-image: url(../imgs/poemTest${pictureNum}.jpg)">
+                    `<div class = "likePoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "likeAuthor">
@@ -114,31 +152,35 @@ function showHeartedBooks(page, length) {
                 heartedBookCover.appendChild(bookElement);
             }
         } else {
-            alert(`have not anything hearted books`);
+            seeHeartedMoreCover.style.display = 'none';
         }
     });
 }
 
-function showPopularBooks (page, length) {
+const showPopularBooks = (page, length) => {
     readPopularBooks(page, length, (result, books) => {
+        let seeRecommendMoreCover = document.getElementById('seeRecommendMoreCover');
+
         if (result) {
             if (books.length < 3) {
                 seeRecommendMoreCover.style.display = 'none';
             } else {
                 seeRecommendMoreCover.style.display = '';
                 seeRecommendMoreCover.onclick = (e) => {
-                    showRecommendBooks(page + 1, length);
+                    showPopularBooks(page + 1, length);
                 };
             }
+
+            let recommendBookCover = document.getElementById('recommendPoemCover');
 
             for (let book of books) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'recommendPoems');
 
-                let pictureNum = book.id > 7 ? book.id % 7 + 1 : 7 % book.id + 1;
+                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
 
                 let bookContent = 
-                    `<div class = "recommendPoemPics" style="background-image: url(../imgs/poemTest${pictureNum}.jpg)">
+                    `<div class = "recommendPoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "recommendAuthor">
@@ -171,10 +213,42 @@ function showPopularBooks (page, length) {
                 recommendBookCover.appendChild(bookElement);
             }
         } else {
-            alert(`have not anything popular books`);
+            seeRecommendMoreCover.style.display = 'none';
         }
     });
 }
 
+document.getElementById('mainLogo').onclick = (e) => {
+    location.href = './MainPage.html';
+}
+
+document.getElementById('mainPageLnk').onclick = (e) => {
+    location.href = './MainPage.html';
+};
+
+document.getElementById('myPageLnk').onclick = (e) => {
+    location.href = './MyPage.html';
+};
+
+document.getElementById('logoutLnk').onclick = (e) => {
+    if (localStorage.getItem('Poem-Session-Key')) {
+        localStorage.setItem('Poem-Session-Key', '');
+    }
+
+    location.href = './Landing.html';
+};
+
+document.getElementById('searchBtn').onclick = (e) => {
+    let word = document.getElementById('searchText').value;
+
+    if (word) {
+        localStorage.setItem('Poem-Search-Word', word);
+        location.href = './Search.html';
+    } else {
+        alert('검색어를 입력하세요');
+    }
+};
+
+showMyPopularBook();
 showHeartedBooks(1, 3);
 showPopularBooks(1, 3);

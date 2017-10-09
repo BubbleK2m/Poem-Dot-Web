@@ -10,9 +10,9 @@
         <header>
             <div id = "mainLogo">Poem</div>
             <ul>
-                <li><a>메인</a></li>
-                <li><a>마이페이지</a></li>
-                <li><a>로그아웃</a></li>
+                <li><a id='mainPageLnk'>메인</a></li>
+                <li><a id='myPageLnk'>마이페이지</a></li>
+                <li><a id='logoutLnk'>로그아웃</a></li>
                 <li><input type = "text" placeholder="검색어 입력"></li>
                 <img src = "../imgs/searchImg.png" style = "margin-top:-4px">
             </ul>
@@ -21,12 +21,13 @@
         <div id = "poemBack">
             <!-- 임시 3개 --> 
             <div class = "sliders">
-                <h1>나의 대표 시집</h1>
+                <h1>내 정보</h1>
                 <img src = "../imgs/poemTest2.jpg" class = "backImg">
                 <div id = "poemPart">
-                    <h2 id = "author">필명: 정윤재</h2>
-                    <h2 id = "authorEmail">이메일: jung22337@naver.com</h2>
-                    <h2 id = "startDate">가입일자 : 2017/09/25</h2>
+                    <h2 id = "author"></h2>
+                    <h2 id = "authorEmail"></h2>
+                    <h2 id = "poemsCnt"></h2>
+                    <h2 id = "booksCnt"></h2>
                 </div>
             </div>
         </div>
@@ -34,91 +35,66 @@
         <h1>나의 시</h1>
         
         <!-- 제목 넣을거 생각못해서 padding-top으로 아래로 보냄 ㅜ ㅈㅅ -->
-        <div id = "selectPoemCover">
-            <div class = "selectPoems">
-                <div class = "poemName">
-                    사랑의 계절
-                </div>
-            </div>
-            <div class = "selectPoems">
-                <div class = "poemName">
-                    봄날
-                </div>
-            </div>
-            <div class = "selectPoems">
-                <div class = "poemName">
-                    마음 속에
-                </div>
-            </div>
-            <div class = "selectPoems">
-                <div class = "poemName">
-                    문득
-                </div>
-            </div>
-            <div class = "selectPoems">
-                <div class = "poemName">
-                    겨울 속을 걸어
-                </div>
-            </div>
-        </div>
+        <div id = 'poemsCover'>
+        </div>  
+        
         
         <div class = "poemBtnCover">
             <div class = "poemBtns" id = "createNewPoem">
                 시 작성
-            </div>
-            <div class = "poemBtns" id = "seeMorePoem">
-                더 보기
             </div>
         </div>
         
         <h1>나의 시집</h1>
         
         <!-- 더 보기에서는 bookCover를 추가해야됌. --> 
-        <div class = "bookCover">
-            <div class = "books">
-                <div class = "bookImgs">
-                    <img src = "../imgs/book1.gif" class = "realImgs">
+        <div id = 'booksCover'>
+            <!--<div class = "bookCover">
+                <div class = "books">
+                    <div class = "bookImgs">
+                        <img src = "../imgs/book1.gif" class = "realImgs">
+                    </div>
+                    <div class = "bookEx">
+                        <h1>길거리</h1>
+                        <h2>유영</h2>
+                        <h2>110 좋아요</h2>
+                    </div>
                 </div>
-                <div class = "bookEx">
-                    <h1>길거리</h1>
-                    <h2>유영</h2>
-                    <h2>110 좋아요</h2>
-                </div>
-            </div>
-            
-            <div class = "books">
-                <div class = "bookImgs">
-                    <img src = "../imgs/book2.jpg" class = "realImgs">
-                </div>
-                <div class = "bookEx">
-                    <h1>방울 속으로</h1>
-                    <h2>유영</h2>
-                    <h2>65 좋아요</h2>
-                </div>
-            </div>
-        </div>
-        <div class = "bookCover">  
-            <div class = "books">
-                <div class = "bookImgs">
-                    <img src = "../imgs/book3.jpg" class = "realImgs">
-                </div>
-                <div class = "bookEx">
-                    <h1>여유</h1>
-                    <h2>유영</h2>
-                    <h2>82 좋아요</h2>
+                
+                <div class = "books">
+                    <div class = "bookImgs">
+                        <img src = "../imgs/book2.gif" class = "realImgs">
+                    </div>
+                    <div class = "bookEx">
+                        <h1>방울 속으로</h1>
+                        <h2>유영</h2>
+                        <h2>65 좋아요</h2>
+                    </div>
                 </div>
             </div>
-            
-            <div class = "books">
-                <div class = "bookImgs">
-                    <img src = "../imgs/book4.gif" class = "realImgs">
+            <div class = "bookCover">  
+                <div class = "books">
+                    <div class = "bookImgs">
+                        <img src = "../imgs/book3.gif" class = "realImgs">
+                    </div>
+                    <div class = "bookEx">
+                        <h1>여유</h1>
+                        <h2>유영</h2>
+                        <h2>82 좋아요</h2>
+                    </div>
                 </div>
-                <div class = "bookEx">
-                    <h1>식탁 위</h1>
-                    <h2>유영</h2>
-                    <h2>77 좋아요</h2>
+                
+                <div class = "books">
+                    <div class = "bookImgs">
+                        <img src = "../imgs/book4.gif" class = "realImgs">
+                    </div>
+                    <div class = "bookEx">
+                        <h1>식탁 위</h1>
+                        <h2>유영</h2>
+                        <h2>77 좋아요</h2>
+                    </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         
         <div class = "poemBtnCover" id = "bookBtnCover">
@@ -133,6 +109,8 @@
         <footer>
             
         </footer>
+
+        <script type = 'text/javascript' src='../js/MyPage.js'></script>
     </body>
 </html>
 
