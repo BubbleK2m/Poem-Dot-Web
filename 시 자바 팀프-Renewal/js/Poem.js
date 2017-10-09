@@ -18,6 +18,25 @@ function readPoem(id, callback) {
     xhr.send(null);
 }
 
+function removePoem(id, callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+
+    xhr.open('DELETE', `http://52.43.254.152/poem/${id}`, true);
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+
+    xhr.send(null);
+}
+
 function readMyPoems(callback) {
     let xhr = new XMLHttpRequest();
     
@@ -78,13 +97,27 @@ const showPoem = (id) => {
             poemContent.innerHTML = poem.content.split('\n').join('<br>');
         
             let listBtn = contentCover.querySelector('#listBtn');
-            
+            let editBtn = contentCover.querySelector('#changeBtn');
+            let deleteBtn = contentCover.querySelector('#delBtn');
+
             if (poem.book !== 0) {
+                editBtn.style.display = 'none';
+                deleteBtn.style.display = 'none';
+
                 listBtn.onclick = (e) => {
                     localStorage.setItem('Poem-Book-Id', poem.book);
                     location.href = './Book.html';
                 };
             } else {
+                editBtn.style.display = '';
+                deleteBtn.style.display = '';
+
+                deleteBtn.onclick = (e) => {
+                    if (confirm('정말로 삭제하시겠습니까?')) {
+                        deletePoem(id);
+                    }
+                };
+
                 listBtn.onclick = (e) => {
                     location.href = './MyPage.html';
                 };
@@ -151,6 +184,17 @@ const showPoem = (id) => {
         } else {
             alert('시를 조회할 수 없습니다.');
             location.href = './MainPage.html';
+        }
+    });
+};
+
+const deletePoem = (id) => {
+    removePoem(id, (result) => {
+        if (result) {
+            alert('시 삭제 성공');
+            location.href = './MyPage.html';
+        } else {
+            alert('시 삭제 실패');
         }
     });
 };

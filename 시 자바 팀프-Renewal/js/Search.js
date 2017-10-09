@@ -21,7 +21,14 @@ function readBooksByWord(word, callback) {
 const showBooksByWord = (word) => {
     readBooksByWord(word, (result, books) => {
         if (result) {
+            let searchedWord = document.getElementById('searchedText');
+            searchedWord.innerText = word;
+    
+            let searchedCnt =  document.getElementById('searchedCnt');
+
             if (books) {
+                searchedCnt.innerText = books.length;
+
                 let searchedWord = document.getElementById('searchedText');
                 searchedWord.innerText = word;
 
@@ -91,6 +98,8 @@ const showBooksByWord = (word) => {
 
                     booksCover.appendChild(bookElement);
                 }
+            } else {
+                searchedCnt.innerText = 0;
             }
         } else {
             alert('시집을 검색할 수 없습니다.');
