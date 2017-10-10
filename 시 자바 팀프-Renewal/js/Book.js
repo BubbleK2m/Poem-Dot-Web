@@ -39,7 +39,7 @@ function readHeartAtBook(id, callback) {
     xhr.send(null);
 }
 
-function editHeartAtBook(id, heart, callback) {
+function updateHeartAtBook(id, heart, callback) {
     let xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = (e) => {
@@ -99,37 +99,47 @@ const showBook = (id) => {
 
             let bookHearts = bookElement.querySelector('#thumbCnt');
             bookHearts.innerText = book.hearts;
-            
-            let heartBtn = bookElement.querySelector('#thumbUp');
-
-            readHeartAtBook(id, (result, heart) => {
-                if (result) {
-                    if (heart) {
-                        heartBtn.setAttribute('src', `../imgs/clickLike.png`);
-                        
-                        heartBtn.onclick = (e) => {
-                            editHeartAtBook(id, false, (result) => {
-                                if (result) {
-                                    showBook(id);
-                                }
-                            });
-                        };
-                    } else {
-                        heartBtn.setAttribute('src', `../imgs/like.png`);
-                        
-                        heartBtn.onclick = (e) => {
-                            editHeartAtBook(id, true, (result) => {
-                                if (result) {
-                                    showBook(id);
-                                }
-                            });
-                        };
-                    }
-                }
-            });
         } else {
             alert('시집을 조회할 수 없음');
             location.href = './MainPage.html';
+        }
+    });
+}
+
+const showHeartAtBook = (id) => {
+    readHeartAtBook(id, (result, heart) => {
+        if (result) {
+            let heartBtn = document.getElementById('thumbUp');
+
+            if (heart) {
+                heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+            } else {
+                heartBtn.setAttribute('src', `../imgs/like.png`);
+            }
+
+            heartBtn.onclick = (e) => {
+                editHeartAtBook(id, !heart);
+            };
+        }
+    });
+};
+
+const editHeartAtBook = (id, heart) => {
+    updateHeartAtBook(id, heart, (result) => {
+        if (result) {
+            let heartBtn = document.getElementById('thumbUp');
+
+            if (heart) {
+                heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+            } else {
+                heartBtn.setAttribute('src', `../imgs/like.png`);
+            }
+
+            showBook(id);
+
+            heartBtn.onclick = (e) => {
+                editHeartAtBook(id, !heart);
+            };
         }
     });
 }
@@ -204,6 +214,7 @@ document.getElementById('searchBtn').onclick = (e) => {
 };
 
 showBook(localStorage.getItem('Poem-Book-Id'));
+showHeartAtBook(localStorage.getItem('Poem-Book-Id'));
 showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));
 
 

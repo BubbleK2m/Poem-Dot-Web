@@ -78,7 +78,6 @@ function readPoemsAtBook(id, callback) {
 const showPoem = (id) => {
     readPoem(id, (result, poem) => {
         if (result) {
-
             let imageCover = document.getElementById('imgPart');
             let poemImage = imageCover.querySelector('.poemImg');
         
