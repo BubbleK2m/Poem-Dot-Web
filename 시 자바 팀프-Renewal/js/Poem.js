@@ -112,6 +112,11 @@ const showPoem = (id) => {
                 editBtn.style.display = '';
                 deleteBtn.style.display = '';
 
+                editBtn.onclick = (e) => {
+                    localStorage.setItem('Poem-Poem-Id', id);
+                    location.href = './EditPoem.html';
+                };
+
                 deleteBtn.onclick = (e) => {
                     if (confirm('정말로 삭제하시겠습니까?')) {
                         deletePoem(id);

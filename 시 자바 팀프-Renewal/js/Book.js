@@ -18,25 +18,6 @@ function readBook(id, callback) {
     xhr.send(null);
 }
 
-function removePoem(id, callback) {
-    let xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = (e) => {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                callback(true);
-            } else {
-                callback(false);
-            }
-        }
-    };
-
-    xhr.open('DELETE', `http://52.43.254.152/poem/${id}`, true);
-    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
-
-    xhr.send(null);
-}
-
 function readHeartAtBook(id, callback) {
     let xhr = new XMLHttpRequest();
     
@@ -152,17 +133,6 @@ const showBook = (id) => {
         }
     });
 }
-
-const deleteBook = (id) => {
-    removeBook(id, (result) => {
-        if (result) {
-            alert('시 삭제 성공');
-            location.href = './MyPage.html';
-        } else {
-            alert('시 삭제 실패');
-        }
-    });
-};
 
 let poemsCover = document.getElementById('poemsBack');
 

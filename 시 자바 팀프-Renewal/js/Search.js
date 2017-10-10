@@ -29,12 +29,6 @@ const showBooksByWord = (word) => {
             if (books) {
                 searchedCnt.innerText = books.length;
 
-                let searchedWord = document.getElementById('searchedText');
-                searchedWord.innerText = word;
-
-                let searchedCnt =  document.getElementById('searchedCnt');
-                searchedCnt.innerText = books.length;
-
                 let booksCover = document.getElementById('searchCover');
 
                 for (let book of books) {
