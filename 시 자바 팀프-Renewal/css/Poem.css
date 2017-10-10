@@ -52,6 +52,7 @@ header * {
     font-size: 3rem;
     margin-left: 4rem;
     letter-spacing: 3px;
+    cursor:pointer;
 }
 
 ul {
