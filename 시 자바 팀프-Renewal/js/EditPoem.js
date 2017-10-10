@@ -22,11 +22,13 @@ function updatePoem(id, title, content, alignment, callback) {
     let xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = (e) => {
-        if (xhr.status === 200) {
-            callback(true);
-            location.href = './MyPage.html';
-        } else {
-            callback(false);
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true);
+                location.href = './MyPage.html';
+            } else {
+                callback(false);
+            }
         }
     };
 
