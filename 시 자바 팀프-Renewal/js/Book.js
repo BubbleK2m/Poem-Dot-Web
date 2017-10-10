@@ -18,6 +18,67 @@ function readBook(id, callback) {
     xhr.send(null);
 }
 
+function removePoem(id, callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+
+    xhr.open('DELETE', `http://52.43.254.152/poem/${id}`, true);
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+
+    xhr.send(null);
+}
+
+function readHeartAtBook(id, callback) {
+    let xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true, true);
+            } else if (xhr.status === 204) {
+                callback(true, false);
+            } else {
+                callback(false, false);
+            }
+        }
+    };
+
+    xhr.open('GET', `http://52.43.254.152/book/${id}/heart`, true);
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+
+    xhr.send(null);
+}
+
+function editHeartAtBook(id, heart, callback) {
+    let xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+
+    xhr.open('PUT', `http://52.43.254.152/book/${id}/heart`, true);
+
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+
+    xhr.send(`heart=${heart}`);
+}
+
 function readPoemsAtBook(id, callback) {
     let xhr = new XMLHttpRequest();
     
@@ -38,38 +99,53 @@ function readPoemsAtBook(id, callback) {
 
 let bookElement = bookCover.querySelector('#poemCover');
 
-function showBook(id) {
+const showBook = (id) => {
     readBook(id, (result, book) => {
         if (result) {
             let pictureNum = id % 4 === 0 ? 4 : id % 4;
-
-            bookElement.innerHTML =
-                `<h1>시집 '${book.title}'</h1>
-                <img src = "../imgs/book${pictureNum}.gif" class = "backImg">
-                <div id = "poemPart">
-                    <h2>${book.title}</h2>
-                    <h2 id = "author">${book.writer}</h2>
-                    <h2 id = "explain">${book.writer} 의 시집입니다.</h2>
-
-                    <img src = "../imgs/like.png" id="thumbUp">
-                    <div id = "thumbCnt">
-                        ${book.hearts}
-                    </div>
-                </div>`;
             
-            /* 좋아요 누르는 것 */
-            let cntTest = 1;
+            let bookTitle = bookElement.querySelector('#title');
+            bookTitle.innerText = book.title;
+
+            let bookImage = bookElement.querySelector('.backImg');
+            bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+
+            let bookAuthor = bookElement.querySelector('#author');
+            bookAuthor.innerText = book.writer;
+
+            let bookExplain = bookElement.querySelector('#explain');
+            bookExplain.innerText = `${book.writer} 의 시집입니다`;
+
+            let bookHearts = bookElement.querySelector('#thumbCnt');
+            bookHearts.innerText = book.hearts;
             
-            let likeBtn = document.getElementById('thumbUp');
-            likeBtn.addEventListener('click', () => {
-                if(cntTest % 2 == 1){
-                    likeBtn.src = "../imgs/clickLike.png";
-                }else{
-                    likeBtn.src = "../imgs/like.png";
+            let heartBtn = bookElement.querySelector('#thumbUp');
+
+            readHeartAtBook(id, (result, heart) => {
+                if (result) {
+                    if (heart) {
+                        heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+                        
+                        heartBtn.onclick = (e) => {
+                            editHeartAtBook(id, false, (result) => {
+                                if (result) {
+                                    showBook(id);
+                                }
+                            });
+                        };
+                    } else {
+                        heartBtn.setAttribute('src', `../imgs/like.png`);
+                        
+                        heartBtn.onclick = (e) => {
+                            editHeartAtBook(id, true, (result) => {
+                                if (result) {
+                                    showBook(id);
+                                }
+                            });
+                        };
+                    }
                 }
-                cntTest++;
             });
-            
         } else {
             alert('시집을 조회할 수 없음');
             location.href = './MainPage.html';
@@ -77,9 +153,20 @@ function showBook(id) {
     });
 }
 
+const deleteBook = (id) => {
+    removeBook(id, (result) => {
+        if (result) {
+            alert('시 삭제 성공');
+            location.href = './MyPage.html';
+        } else {
+            alert('시 삭제 실패');
+        }
+    });
+};
+
 let poemsCover = document.getElementById('poemsBack');
 
-function showPoemsAtBook(id) {
+const showPoemsAtBook = (id) => {
     readPoemsAtBook(id, (result, poems) => {
         if (result) {
             for (let poem of poems) {
