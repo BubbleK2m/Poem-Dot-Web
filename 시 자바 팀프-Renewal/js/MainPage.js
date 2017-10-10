@@ -20,6 +20,26 @@ function readMyPopularBook (callback) {
     xhr.send(null);
 }
 
+function readHeartAtBook(id, callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true, true);
+            } else if (xhr.status === 204) {
+                callback(true, false);
+            } else {
+                callback(false, false);
+            }
+        }
+    };
+
+    xhr.open('GET', `http://52.43.254.152/book/${id}/heart`, true);
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+
+    xhr.send(null);
+}
 function readHeartedBooks(page, length, callback) {
     let xhr = new XMLHttpRequest();
 
@@ -88,6 +108,18 @@ const showMyPopularBook = () => {
                         location.href = './Book.html';
                     };
                 })(book));
+
+                readHeartAtBook(book.id, (result, heart) => {
+                    if (result) {
+                        let heartBtn = document.getElementById('thumbUp');
+                        
+                        if (heart) {
+                            heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+                        } else {
+                            heartBtn.setAttribute('src', `../imgs/like.png`);
+                        }
+                    }
+                });
             }
         } else {
             alert('회원 정보를 조회할 수 없습니다.');
