@@ -97,7 +97,7 @@ const showMyPopularBook = () => {
                 bookHearts.innerText = book.hearts;
                 
                 let bookImage = document.getElementById('bookImg');
-                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
+                let pictureNum = book.id % 10 === 0 ? 10 : book.id % 10;
                 
                 bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
 
@@ -148,7 +148,7 @@ const showHeartedBooks = (page, length) => {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'likePoems');   
                 
-                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
+                let pictureNum = book.id % 10 === 0 ? 10 : book.id % 10;
 
                 let bookContent = 
                     `<div class = "likePoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
@@ -209,7 +209,7 @@ const showPopularBooks = (page, length) => {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'recommendPoems');
 
-                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
+                let pictureNum = book.id % 10 === 0 ? 10 : book.id % 10;
 
                 let bookContent = 
                     `<div class = "recommendPoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">

@@ -83,7 +83,7 @@ let bookElement = bookCover.querySelector('#poemCover');
 const showBook = (id) => {
     readBook(id, (result, book) => {
         if (result) {
-            let pictureNum = id % 4 === 0 ? 4 : id % 4;
+            let pictureNum = id % 10 === 0 ? 10 : id % 10;
             
             let bookTitle = bookElement.querySelector('#title');
             bookTitle.innerText = book.title;
