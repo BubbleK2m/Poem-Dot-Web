@@ -67,7 +67,7 @@ const showMyInfo = () => {
             myName.innerText = `필명: ${me.name}`;
 
             let myEmail = myCover.querySelector('#authorEmail');
-            myEmail.innerText = `이메일: ${me.email}`;
+            myEmail.innerText = `아이디: ${me.email}`;
 
             let myPoemsCnt = myCover.querySelector('#poemsCnt');
             myPoemsCnt.innerText = `시: ${me.poems}개`;
