@@ -82,14 +82,12 @@ let bookElement = bookCover.querySelector('#poemCover');
 
 const showBook = (id) => {
     readBook(id, (result, book) => {
-        if (result) {
-            let pictureNum = id % 10 === 0 ? 10 : id % 10;
-            
+        if (result) {  
             let bookTitle = bookElement.querySelector('#title');
             bookTitle.innerText = book.title;
 
             let bookImage = bookElement.querySelector('.backImg');
-            bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+            bookImage.setAttribute('src', `http://52.43.254.152/book/${id}/image`);
 
             let bookAuthor = bookElement.querySelector('#author');
             bookAuthor.innerText = book.writer;
