@@ -97,9 +97,7 @@ const showMyPopularBook = () => {
                 bookHearts.innerText = book.hearts;
                 
                 let bookImage = document.getElementById('bookImg');
-                let pictureNum = book.id % 10 === 0 ? 10 : book.id % 10;
-                
-                bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+                bookImage.setAttribute('src', `http://52.43.254.152/book/${book.id}/image`);
 
                 let showMoreBtn = document.getElementById('showMore');
                 showMoreBtn.onclick = (((book) => {
@@ -147,11 +145,9 @@ const showHeartedBooks = (page, length) => {
             for (let book of books) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'likePoems');   
-                
-                let pictureNum = book.id % 10 === 0 ? 10 : book.id % 10;
 
                 let bookContent = 
-                    `<div class = "likePoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
+                    `<div class = "likePoemPics" style="background-image: url(http://52.43.254.152/book/${book.id}/image)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "likeAuthor">
@@ -208,11 +204,9 @@ const showPopularBooks = (page, length) => {
             for (let book of books) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'recommendPoems');
-
-                let pictureNum = book.id % 10 === 0 ? 10 : book.id % 10;
-
+                
                 let bookContent = 
-                    `<div class = "recommendPoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
+                    `<div class = "recommendPoemPics" style="background-image: url(http://52.43.254.152/book/${book.id}/image)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "recommendAuthor">

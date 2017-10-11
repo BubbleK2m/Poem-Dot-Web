@@ -95,6 +95,9 @@ const showPoem = (id) => {
             let poemContent = contentCover.querySelector('#poemContent');
             poemContent.innerHTML = poem.content.split('\n').join('<br>');
         
+            let alignments = ['left', 'center', 'right'];
+            poemContent.style.textAlign = alignments[poem.alignment - 1];
+
             let listBtn = contentCover.querySelector('#listBtn');
             let editBtn = contentCover.querySelector('#changeBtn');
             let deleteBtn = contentCover.querySelector('#delBtn');
