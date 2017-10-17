@@ -77,7 +77,8 @@ function addBook(title, poems, callback) {
     xhr.onreadystatechange = (e) => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                callback(true);
+                let response = JSON.parse(xhr.responseText);
+                callback(true, response);
             } else {
                 callback(false);
             }
@@ -92,32 +93,79 @@ function addBook(title, poems, callback) {
     xhr.send(`title=${title}&poems=${JSON.stringify(poems)}`);
 }
 
-const publishBook = (title, poems) => {
-    addBook(title, poems, (result) => {
+function addImageAtBook(id, image, callback) {
+    let xhr = new XMLHttpRequest();
+
+    let formData = new FormData();
+    formData.append('image', image);
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 201) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+    
+    xhr.open('POST', `http://52.43.254.152/book/${id}/image`, true);
+
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+    xhr.send(formData);
+}
+
+const writeBook = (title, poems) => {
+    addBook(title, poems, (result, book) => {
         if (result) {
-            alert('시집 등록 성공');
-            location.href = './MyPage.html';
+            localStorage.setItem('Poem-Book-Id', book.id);
+            
+            let image = document.getElementById('realImg').files[0];
+            
+            if (!image) {
+                alert('시집 등록 성공');
+                location.href = './MyPage.html';
+            } else {
+                writeImageAtBook(book.id, image);
+            }
         } else {
             alert('시집 등록 실패');
         }
     });
 };
 
-let titleForm = document.getElementById('titleName');
-let publishBtn = document.getElementById('createBook');
+const writeImageAtBook = (id, image) => {
+    addImageAtBook(id, image, (result) => {
+        if (result) {
+            alert('시집 등록 성공');
+            location.href = './MyPage.html'
+        } else {
+            alert('시집 등록 실패');
+        }
+    });
+};
 
-publishBtn.onclick = (e) => {
-    let title = titleForm.value;
-    
-    if (!title) {
-        alert('시집의 제목이 입력되지 않았습니다');
-        return;
-    }
-    
-    if (!poemIds || poemIds.length < 3) {
-        alert('시집에 등록될 시의 개수는 3개 이상입니다.')
-        return;
-    }
+localStorage.setItem('Poem-Book-Id', 0);
 
-    publishBook(title, poemIds);
+document.getElementById('createBook').onclick = (e) => {
+    let image = document.getElementById('realImg').files[0];
+
+    if (Number(localStorage.getItem('Poem-Book-Id')) === 0) {
+        let titleForm = document.getElementById('titleName');
+        let title = titleForm.value;
+        
+        if (!title) {
+            alert('시집의 제목이 입력되지 않았습니다');
+            return;
+        }
+        
+        if (!poemIds || poemIds.length < 3) {
+            alert('시집에 등록될 시의 개수는 3개 이상입니다.')
+            return;
+        }
+    
+        writeBook(title, poemIds);
+    } else {
+        writeImageAtBook(localStorage.getItem('Poem-Book-Id'), image);
+    }
 };

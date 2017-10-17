@@ -67,7 +67,7 @@ const showMyInfo = () => {
             myName.innerText = `필명: ${me.name}`;
 
             let myEmail = myCover.querySelector('#authorEmail');
-            myEmail.innerText = `이메일: ${me.email}`;
+            myEmail.innerText = `아이디: ${me.email}`;
 
             let myPoemsCnt = myCover.querySelector('#poemsCnt');
             myPoemsCnt.innerText = `시: ${me.poems}개`;
@@ -153,10 +153,9 @@ const showMyBooks = (page, length) => {
                 bookImg.setAttribute('class', 'bookImgs');
     
                 let realImg = document.createElement('img');
+                
                 realImg.setAttribute('class', 'realImgs');
-
-                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
-                realImg.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+                realImg.setAttribute('src', `http://52.43.254.152/book/${book.id}/image`);
     
                 bookImg.appendChild(realImg);
                 bookElement.appendChild(bookImg);
@@ -187,15 +186,16 @@ const showMyBooks = (page, length) => {
                 })(book))
 
                 let bookCover;
+                let index = (page - 1) * length + i;
 
-                if ((i + 1) % 2 === 1) {
+                if ((index + 1) % 2 === 1) {
                     bookCover = document.createElement('div');
                     bookCover.setAttribute('class', 'bookCover');
 
                     bookCover.appendChild(bookElement);
                     booksCover.appendChild(bookCover);
                 } else {
-                    bookCover = document.getElementsByClassName('bookCover')[Math.trunc(i / 2)];
+                    bookCover = document.getElementsByClassName('bookCover')[Math.trunc(index / 2)];
                     bookCover.appendChild(bookElement);
                 }
             }

@@ -78,7 +78,6 @@ function readPoemsAtBook(id, callback) {
 const showPoem = (id) => {
     readPoem(id, (result, poem) => {
         if (result) {
-
             let imageCover = document.getElementById('imgPart');
             let poemImage = imageCover.querySelector('.poemImg');
         
@@ -96,6 +95,9 @@ const showPoem = (id) => {
             let poemContent = contentCover.querySelector('#poemContent');
             poemContent.innerHTML = poem.content.split('\n').join('<br>');
         
+            let alignments = ['left', 'center', 'right'];
+            poemContent.style.textAlign = alignments[poem.alignment - 1];
+
             let listBtn = contentCover.querySelector('#listBtn');
             let editBtn = contentCover.querySelector('#changeBtn');
             let deleteBtn = contentCover.querySelector('#delBtn');
@@ -111,6 +113,11 @@ const showPoem = (id) => {
             } else {
                 editBtn.style.display = '';
                 deleteBtn.style.display = '';
+
+                editBtn.onclick = (e) => {
+                    localStorage.setItem('Poem-Poem-Id', id);
+                    location.href = './EditPoem.html';
+                };
 
                 deleteBtn.onclick = (e) => {
                     if (confirm('정말로 삭제하시겠습니까?')) {

@@ -29,12 +29,6 @@ const showBooksByWord = (word) => {
             if (books) {
                 searchedCnt.innerText = books.length;
 
-                let searchedWord = document.getElementById('searchedText');
-                searchedWord.innerText = word;
-
-                let searchedCnt =  document.getElementById('searchedCnt');
-                searchedCnt.innerText = books.length;
-
                 let booksCover = document.getElementById('searchCover');
 
                 for (let book of books) {
@@ -47,9 +41,7 @@ const showBooksByWord = (word) => {
                     let bookImage = document.createElement('img');
                     bookImage.setAttribute('class', 'searchImgs');
 
-                    let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
-
-                    bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+                    bookImage.setAttribute('src', `http://52.43.254.152/book/${book.id}/image`);
 
                     imageCover.appendChild(bookImage);
 

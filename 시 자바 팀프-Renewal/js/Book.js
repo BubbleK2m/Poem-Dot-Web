@@ -18,25 +18,6 @@ function readBook(id, callback) {
     xhr.send(null);
 }
 
-function removePoem(id, callback) {
-    let xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = (e) => {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                callback(true);
-            } else {
-                callback(false);
-            }
-        }
-    };
-
-    xhr.open('DELETE', `http://52.43.254.152/poem/${id}`, true);
-    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
-
-    xhr.send(null);
-}
-
 function readHeartAtBook(id, callback) {
     let xhr = new XMLHttpRequest();
     
@@ -58,7 +39,7 @@ function readHeartAtBook(id, callback) {
     xhr.send(null);
 }
 
-function editHeartAtBook(id, heart, callback) {
+function updateHeartAtBook(id, heart, callback) {
     let xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = (e) => {
@@ -101,14 +82,12 @@ let bookElement = bookCover.querySelector('#poemCover');
 
 const showBook = (id) => {
     readBook(id, (result, book) => {
-        if (result) {
-            let pictureNum = id % 4 === 0 ? 4 : id % 4;
-            
+        if (result) {  
             let bookTitle = bookElement.querySelector('#title');
             bookTitle.innerText = book.title;
 
             let bookImage = bookElement.querySelector('.backImg');
-            bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+            bookImage.setAttribute('src', `http://52.43.254.152/book/${id}/image`);
 
             let bookAuthor = bookElement.querySelector('#author');
             bookAuthor.innerText = book.writer;
@@ -118,34 +97,6 @@ const showBook = (id) => {
 
             let bookHearts = bookElement.querySelector('#thumbCnt');
             bookHearts.innerText = book.hearts;
-            
-            let heartBtn = bookElement.querySelector('#thumbUp');
-
-            readHeartAtBook(id, (result, heart) => {
-                if (result) {
-                    if (heart) {
-                        heartBtn.setAttribute('src', `../imgs/clickLike.png`);
-                        
-                        heartBtn.onclick = (e) => {
-                            editHeartAtBook(id, false, (result) => {
-                                if (result) {
-                                    showBook(id);
-                                }
-                            });
-                        };
-                    } else {
-                        heartBtn.setAttribute('src', `../imgs/like.png`);
-                        
-                        heartBtn.onclick = (e) => {
-                            editHeartAtBook(id, true, (result) => {
-                                if (result) {
-                                    showBook(id);
-                                }
-                            });
-                        };
-                    }
-                }
-            });
         } else {
             alert('시집을 조회할 수 없음');
             location.href = './MainPage.html';
@@ -153,16 +104,43 @@ const showBook = (id) => {
     });
 }
 
-const deleteBook = (id) => {
-    removeBook(id, (result) => {
+const showHeartAtBook = (id) => {
+    readHeartAtBook(id, (result, heart) => {
         if (result) {
-            alert('시 삭제 성공');
-            location.href = './MyPage.html';
-        } else {
-            alert('시 삭제 실패');
+            let heartBtn = document.getElementById('thumbUp');
+
+            if (heart) {
+                heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+            } else {
+                heartBtn.setAttribute('src', `../imgs/like.png`);
+            }
+
+            heartBtn.onclick = (e) => {
+                editHeartAtBook(id, !heart);
+            };
         }
     });
 };
+
+const editHeartAtBook = (id, heart) => {
+    updateHeartAtBook(id, heart, (result) => {
+        if (result) {
+            let heartBtn = document.getElementById('thumbUp');
+
+            if (heart) {
+                heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+            } else {
+                heartBtn.setAttribute('src', `../imgs/like.png`);
+            }
+
+            showBook(id);
+
+            heartBtn.onclick = (e) => {
+                editHeartAtBook(id, !heart);
+            };
+        }
+    });
+}
 
 let poemsCover = document.getElementById('poemsBack');
 
@@ -234,6 +212,7 @@ document.getElementById('searchBtn').onclick = (e) => {
 };
 
 showBook(localStorage.getItem('Poem-Book-Id'));
+showHeartAtBook(localStorage.getItem('Poem-Book-Id'));
 showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));
 
 

@@ -20,6 +20,26 @@ function readMyPopularBook (callback) {
     xhr.send(null);
 }
 
+function readHeartAtBook(id, callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true, true);
+            } else if (xhr.status === 204) {
+                callback(true, false);
+            } else {
+                callback(false, false);
+            }
+        }
+    };
+
+    xhr.open('GET', `http://52.43.254.152/book/${id}/heart`, true);
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+
+    xhr.send(null);
+}
 function readHeartedBooks(page, length, callback) {
     let xhr = new XMLHttpRequest();
 
@@ -77,9 +97,7 @@ const showMyPopularBook = () => {
                 bookHearts.innerText = book.hearts;
                 
                 let bookImage = document.getElementById('bookImg');
-                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
-                
-                bookImage.setAttribute('src', `../imgs/book${pictureNum}.gif`);
+                bookImage.setAttribute('src', `http://52.43.254.152/book/${book.id}/image`);
 
                 let showMoreBtn = document.getElementById('showMore');
                 showMoreBtn.onclick = (((book) => {
@@ -88,6 +106,18 @@ const showMyPopularBook = () => {
                         location.href = './Book.html';
                     };
                 })(book));
+
+                readHeartAtBook(book.id, (result, heart) => {
+                    if (result) {
+                        let heartBtn = document.getElementById('thumbUp');
+                        
+                        if (heart) {
+                            heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+                        } else {
+                            heartBtn.setAttribute('src', `../imgs/like.png`);
+                        }
+                    }
+                });
             }
         } else {
             alert('회원 정보를 조회할 수 없습니다.');
@@ -115,11 +145,9 @@ const showHeartedBooks = (page, length) => {
             for (let book of books) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'likePoems');   
-                
-                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
 
                 let bookContent = 
-                    `<div class = "likePoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
+                    `<div class = "likePoemPics" style="background-image: url(http://52.43.254.152/book/${book.id}/image)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "likeAuthor">
@@ -176,11 +204,9 @@ const showPopularBooks = (page, length) => {
             for (let book of books) {
                 let bookElement = document.createElement('div');
                 bookElement.setAttribute('class', 'recommendPoems');
-
-                let pictureNum = book.id % 4 === 0 ? 4 : book.id % 4;
-
+                
                 let bookContent = 
-                    `<div class = "recommendPoemPics" style="background-image: url(../imgs/book${pictureNum}.gif)">
+                    `<div class = "recommendPoemPics" style="background-image: url(http://52.43.254.152/book/${book.id}/image)">
                         <div class = "hoverAnim">
                             <p>
                                 <span class = "recommendAuthor">

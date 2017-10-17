@@ -97,7 +97,7 @@ function signup(email, password, name, callback) {
     };
 
     xhr.open('POST', 'http://52.43.254.152/join', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); //post일 때 한국어 잘 표시하기 위해 꼭 필요한 것
 
     xhr.send(`email=${email}&password=${password}&name=${name}`);  
 };
