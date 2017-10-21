@@ -319,3 +319,20 @@ label {
     right: 1.5rem;
     cursor: pointer;
 }
+
+.IdChecks{
+    color:#F4586D;
+    position:absolute;
+    right:1.4rem;
+    margin-top:0.55rem;
+    font-size:0.85rem;
+    font-weight: bold;
+}
+
+.IdChecks#checkAvailable{
+    display:none;
+}
+
+.IdChecks#checkImpossible{
+    display:none;
+}
