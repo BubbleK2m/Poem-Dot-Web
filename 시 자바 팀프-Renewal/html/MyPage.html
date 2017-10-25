@@ -22,12 +22,40 @@
             <!-- 임시 3개 --> 
             <div class = "sliders">
                 <h1>내 정보</h1>
-                <img src = "../imgs/userImg3.png" class = "backImg">
-                <div id = "poemPart">
-                    <h2 id = "author"></h2>
-                    <h2 id = "authorEmail"></h2>
-                    <h2 id = "poemsCnt"></h2>
-                    <h2 id = "booksCnt"></h2>
+                <img src = "../imgs/profileEx.jpg" id = "profile">
+                <img src = "../imgs/change.png" id = "changePic">
+                
+                
+                <div class = "infos" id = "oneIntro">
+                    한 줄 소개 : 
+                    <span contenteditable="false" id = "content">
+                        자랑스러운 대마인이 되겠습니다!
+                    </span>
+                    <img src = "../imgs/change.png" id = "changeImg">
+                </div>
+                <div class = "infos" id = "id">
+                    아이디 : 
+                    <span>
+                        dongju
+                    </span>
+                </div>
+                <div class = "infos" id = "nickname">
+                    필명 : 
+                    <span>
+                        윤동주
+                    </span>
+                </div>
+                <div class = "infos" id = "poemNum">
+                    작성한 시 수 : 
+                    <span>
+                        17
+                    </span>
+                </div>
+                <div class = "infos" id = "bookNum">
+                    제작한 시집 수 : 
+                    <span>
+                        6
+                    </span>
                 </div>
             </div>
         </div>
@@ -112,8 +140,27 @@
             사업자 등록 번호 314-83-01600 / 기관 메일 dsmhs@korea.kr<br>
             Copyright&#9400; 대덕소프트웨어마이스터고등학교. All rights reserved.<br>
         </footer>
-
-        <script type = 'text/javascript' src='../js/MyPage.js'></script>
+        
+        <script type = "text/javascript">
+            let changeBtn = document.getElementById('changeImg');
+            let content = document.getElementById('content');
+            changeBtn.addEventListener('click', () => {
+                content.setAttribute("contenteditable", "true");
+                content.style.textDecoration = "underline";
+            });
+            
+            content.onkeydown = (e) => {
+                if (e.target.innerText.length >= 19) {
+                    e.target.innerText = e.target.innerText.substring(0, 18);
+                }
+                
+                if(e.keyCode == "13"){
+                    content.setAttribute("contenteditable", "false");
+                    content.style.textDecoration = defaultStatus;
+                }
+            }
+        </script>
+        <!--<script type = 'text/javascript' src='../js/MyPage.js'></script>-->
     </body>
 </html>
 
