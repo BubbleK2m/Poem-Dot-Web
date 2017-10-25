@@ -283,4 +283,11 @@ footer {
     height: 8rem;
     background-color: #292929;
     margin-top: 6rem;
+    
+    padding-left:20rem;
+    color:white;
+    font-size:0.9rem;
+    letter-spacing: 0.5px;
+    line-height:1.7;
+    padding-top:1.5rem;
 }

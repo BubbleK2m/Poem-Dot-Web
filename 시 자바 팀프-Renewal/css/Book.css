@@ -171,6 +171,22 @@ h2#explain {
     margin-left: 8px;
 }
 
+#report{
+    padding-left:4rem;
+    padding-top:0.7rem;
+    cursor:pointer;
+}
+
+#reportText{
+    color:white;
+    font-size:0.85rem;
+    position: absolute;
+    margin-left:11.5rem;
+    margin-top:-1.3rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor:pointer;
+}
 
 /**/
 
@@ -248,4 +264,11 @@ footer {
     height: 9rem;
     margin-top: 4rem;
     background-color: #323232;
+    
+    padding-left:20rem;
+    color:white;
+    font-size:0.9rem;
+    letter-spacing: 0.5px;
+    line-height:1.7;
+    padding-top:1.5rem;
 }

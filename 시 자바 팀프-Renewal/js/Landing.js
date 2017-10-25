@@ -127,16 +127,23 @@ loginBtn.onclick = (e) => {
 
 let signupEmailForm = signupForm.querySelector('#emailForm');
 let signupRepeatCheck = signupForm.querySelector('#repeatCheck');
+/* 중복 채크 부분 알림 */
+let checkOkay = document.getElementById('checkAvailable');
+let checkError = document.getElementById('checkImpossible');
 
 signupEmailForm.onblur = (e) => {
     let email = signupEmailForm.value;
                 
     checkEmail(email, (result) => {
         if (result) {
-            alert('중복되는 이메일이 존재하지 않습니다')
+            checkError.style.display = "none";
+            checkOkay.style.display = "block";
+            
             signupRepeatCheck.checked = true;
         } else {
-            alert('중복되는 이메일이 존재합니다');
+            checkOkay.style.display = "none";
+            checkError.style.display = "block";
+            
             signupRepeatCheck.checked = false;
         }
     });
