@@ -40,6 +40,7 @@ function readHeartAtBook(id, callback) {
 
     xhr.send(null);
 }
+
 function readHeartedBooks(page, length, callback) {
     let xhr = new XMLHttpRequest();
 
