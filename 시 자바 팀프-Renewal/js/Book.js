@@ -78,6 +78,44 @@ function readPoemsAtBook(id, callback) {
     xhr.send(null);
 }
 
+function createReportAtBook(id, callback) {
+    let xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+    
+    xhr.open("POST", `http://52.43.254.152/book/${id}/report`, true);
+    xhr.setRequestHeader("Poem-Session-Key", localStorage.getItem("Poem-Session-Key"));
+    
+    xhr.send(null); 
+}
+
+function readReportAtBook(id, callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 204) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+
+    xhr.open("GET", `http://52.43.254.152/book/${id}/report`, true);
+    xhr.setRequestHeader("Poem-Session-Key", localStorage.getItem("Poem-Session-Key"));
+
+    xhr.send(null);
+}
+
 let bookElement = bookCover.querySelector('#poemCover');
 
 const showBook = (id) => {
@@ -138,6 +176,35 @@ const editHeartAtBook = (id, heart) => {
             heartBtn.onclick = (e) => {
                 editHeartAtBook(id, !heart);
             };
+        }
+    });
+}
+
+const addReportAtBook = (id) => {
+    createReportAtBook(id, (result) => {
+        let reportBtn = document.getElementById("report");
+
+        if (result) {
+            reportBtn.setAttribute("src", `../imgs/report.png`);
+            reportBtn.onclick = null;
+        } else {
+            alert("신고에 실패하였습니다.");
+        }
+    });
+};
+
+const showReportAtBook = (id) => {
+    readReportAtBook(id, (result) => {
+        let reportBtn = document.getElementById("report");
+
+        if (result) {
+            reportBtn.setAttribute("src", `../imgs/siren.png`);
+            reportBtn.onclick = (e) => {
+                addReportAtBook(id);
+            };
+        } else {
+            reportBtn.setAttribute("src", `../imgs/report.png`);
+            reportBtn.onclick = null;
         }
     });
 }
@@ -213,6 +280,7 @@ document.getElementById('searchBtn').onclick = (e) => {
 
 showBook(localStorage.getItem('Poem-Book-Id'));
 showHeartAtBook(localStorage.getItem('Poem-Book-Id'));
+showReportAtBook(localStorage.getItem('Poem-Book-Id'));
 showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));
 
 
