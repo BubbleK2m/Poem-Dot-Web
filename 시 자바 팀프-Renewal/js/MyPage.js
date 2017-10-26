@@ -278,8 +278,8 @@ changeBtn.addEventListener('click', () => {
     content.style.textDecoration = "underline";
 
     content.onkeydown = (e) => {
-        if (e.target.innerText.length >= 19) {
-            e.preventDefault();
+        if (e.target.innerText.length >= 18) {
+            e.target.innerText = e.target.innerText.substring(0, 17);
         }
         
         if(e.keyCode == "13"){
