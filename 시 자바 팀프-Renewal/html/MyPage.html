@@ -22,8 +22,12 @@
             <!-- 임시 3개 --> 
             <div class = "sliders">
                 <h1>내 정보</h1>
-                <img src = "../imgs/profileEx.jpg" id = "profile">
-                <img src = "../imgs/change.png" id = "changePic">
+                <div id = "profile"></div>
+                
+                <label for = "changeProfile">
+                    <img src = "../imgs/change.png" id = "changePic">
+                    <input type = "file" accept="image/*" id = "changeProfile" style = "display:none;">
+                </label>
                 
                 
                 <div class = "infos" id = "oneIntro">
@@ -159,6 +163,36 @@
                     content.style.textDecoration = defaultStatus;
                 }
             }
+            
+            /* 클릭 시 이미지 변경 후 적용 */
+            let uploadImg = document.getElementById('changeProfile'); //file
+            let appendImg = document.getElementById('profile'); //willChange
+            
+            console.log("check");
+            uploadImg.onchange = function (e) {
+                e.preventDefault();
+                
+                let file = uploadImg.files[0],
+                    reader = new FileReader();
+                
+                reader.onload = function (event){
+                    let img = new Image();
+                    img.src = event.target.result;
+                    
+//                    //이미지 크기
+//                    if(img.width > 175){
+//                        console.log("overflow!");
+//                        img.width = 175;
+//                    }
+                    
+                    appendImg.innerHTML = '';
+                    appendImg.appendChild(img);
+                    console.log(img);
+                };
+                reader.readAsDataURL(file);
+                
+                return false;
+            };
         </script>
         <!--<script type = 'text/javascript' src='../js/MyPage.js'></script>-->
     </body>
