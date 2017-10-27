@@ -144,61 +144,8 @@
             사업자 등록 번호 314-83-01600 / 기관 메일 dsmhs@korea.kr<br>
             Copyright&#9400; 대덕소프트웨어마이스터고등학교. All rights reserved.<br>
         </footer>
-        
-        <script type = "text/javascript">
-            let changeBtn = document.getElementById('changeImg');
-            let content = document.getElementById('content');
-            changeBtn.addEventListener('click', () => {
-                content.setAttribute("contenteditable", "true");
-                content.style.textDecoration = "underline";
-            });
-            
-            content.onkeydown = (e) => {
-                if (e.target.innerText.length >= 19) {
-                    e.target.innerText = e.target.innerText.substring(0, 18);
-                }
-                
-                if(e.keyCode == "13"){
-                    content.setAttribute("contenteditable", "false");
-                    content.style.textDecoration = defaultStatus;
-                }
-            }
-            
-            /* 클릭 시 이미지 변경 후 적용 */
-            let uploadImg = document.getElementById('changeProfile'); //file
-            let appendImg = document.getElementById('profile'); //willChange
-            
-            console.log("check");
-            uploadImg.onchange = function (e) {
-                e.preventDefault();
-                
-                let file = uploadImg.files[0],
-                    reader = new FileReader();
-                
-                reader.onload = function (event){
-                    let img = new Image();
-                    img.src = event.target.result;
-                    
-//                    //이미지 크기
-//                    if(img.width > 175){
-//                        console.log("overflow!");
-//                        img.width = 175;
-//                    }
-                    
-                    appendImg.innerHTML = '';
-                    appendImg.appendChild(img);
-                    console.log(img);
-                };
-                reader.readAsDataURL(file);
-                
-                return false;
-            };
-        </script>
-        <!--<script type = 'text/javascript' src='../js/MyPage.js'></script>-->
-
 
         <script type = 'text/javascript' src='../js/MyPage.js'></script>
-
     </body>
 </html>
 

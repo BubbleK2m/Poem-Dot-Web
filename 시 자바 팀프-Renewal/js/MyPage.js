@@ -79,6 +79,49 @@ function updateMyComment(comment, callback) {
     xhr.send(`comment=${ encodeURIComponent(comment) }`);
 }
 
+function readMyImage(callback) {
+    let xhr = new XMLHttpRequest();
+    
+    xhr.responseType = "blob"
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true, xhr.response);
+            } else {
+                callback(false);
+            }
+        }
+    };
+
+    xhr.open('GET', `http://52.43.254.152/member/image`, true);
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+    
+    xhr.send(null);
+}
+
+function updateMyImage(image, callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 201) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+    
+    let formData = new FormData();
+    formData.append("image", image);
+
+    xhr.open('PUT', `http://52.43.254.152/member/image`, true);
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+    
+    xhr.send(formData);
+}
+
 const showMyInfo = () => {
     readMyInfo((result, me) => {
         if (result) {
@@ -231,6 +274,27 @@ const showMyBooks = (page, length) => {
     });
 };
 
+const showMyImage = () => {
+    readMyImage((result, file) => {
+        if (result) {
+            let appendImg = document.getElementById('profile');
+            
+            let reader = new FileReader();
+                
+            reader.onload = function (event){
+                let img = new Image();
+                img.src = event.target.result;
+                    
+                appendImg.innerHTML = '';
+                appendImg.appendChild(img);
+                console.log(img);
+            };
+                
+            reader.readAsDataURL(file);
+        }
+    });
+};
+
 document.getElementById('mainLogo').onclick = (e) => {
     location.href = './MainPage.html';
 }
@@ -297,6 +361,36 @@ changeBtn.addEventListener('click', () => {
     }
 });
 
+let uploadImg = document.getElementById('changeProfile'); //file
+
+uploadImg.onchange = function (e) {
+    e.preventDefault();
+    
+    let file = uploadImg.files[0];
+    
+    updateMyImage(file, (result) => {
+        if (result) {
+            let appendImg = document.getElementById('profile');
+            
+            let reader = new FileReader();
+                
+            reader.onload = function (event){
+                let img = new Image();
+                img.src = event.target.result;
+                    
+                appendImg.innerHTML = '';
+                appendImg.appendChild(img);
+                    
+            };
+                
+            reader.readAsDataURL(file);
+        } else {
+            alert("이미지 변경 실패");
+        }
+    });
+};
+
 showMyInfo();
+showMyImage();
 showMyPoems();
 showMyBooks(1, 2);
