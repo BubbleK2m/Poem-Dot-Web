@@ -58,22 +58,48 @@ function readMyBooks(page, length, callback) {
     xhr.send(null);
 }
 
+function updateMyComment(comment, callback) {
+    let xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+    
+    xhr.open('PUT', `http://52.43.254.152/member/comment`, true);
+
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+    
+    xhr.send(`comment=${ encodeURIComponent(comment) }`);
+}
+
 const showMyInfo = () => {
     readMyInfo((result, me) => {
         if (result) {
-            let myCover = document.getElementById('poemPart');
+            let myCover = document.getElementById('myCover');
             
-            let myName = myCover.querySelector('#author');
-            myName.innerText = `필명: ${me.name}`;
+            if (me.comment) {
+                let myComment = myCover.querySelector('#oneIntro > span');;
+                myComment.innerText = `${me.comment}`;
+            }
 
-            let myEmail = myCover.querySelector('#authorEmail');
-            myEmail.innerText = `아이디: ${me.email}`;
+            let myName = myCover.querySelector('#nickname > span');
+            myName.innerText = `${me.name}`;
 
-            let myPoemsCnt = myCover.querySelector('#poemsCnt');
-            myPoemsCnt.innerText = `시: ${me.poems}개`;
+            let myEmail = myCover.querySelector('#id > span');
+            myEmail.innerText = `${me.email}`;
 
-            let myBooksCnt = myCover.querySelector('#booksCnt');
-            myBooksCnt.innerText = `시집: ${me.books}권`;
+            let myPoemsCnt = myCover.querySelector('#poemNum > span');
+            myPoemsCnt.innerText = `${me.poems}개`;
+
+            let myBooksCnt = myCover.querySelector('#bookNum > span');
+            myBooksCnt.innerText = `${me.books}권`;
         } else {
             alert('내 정보를 불러올 수 없습니다');
             location.href = 'Landing.html';
@@ -243,6 +269,33 @@ document.getElementById('searchBtn').onclick = (e) => {
         alert('검색어를 입력하세요');
     }
 };
+
+let changeBtn = document.getElementById('changeImg');
+changeBtn.addEventListener('click', () => {
+    let content = document.getElementById('content');
+
+    content.setAttribute("contenteditable", "true");
+    content.style.textDecoration = "underline";
+
+    content.onkeydown = (e) => {
+        if (e.target.innerText.length >= 18) {
+            e.target.innerText = e.target.innerText.substring(0, 17);
+        }
+        
+        if(e.keyCode == "13"){
+            updateMyComment(content.innerText, (result) => {
+                if (result) {
+                    content.setAttribute("contenteditable", "false");
+                    content.style.textDecoration = defaultStatus;
+                } else {
+                    alert("수정 실패");
+                }
+            });
+
+            return false;
+        }
+    }
+});
 
 showMyInfo();
 showMyPoems();
