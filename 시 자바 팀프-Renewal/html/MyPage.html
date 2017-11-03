@@ -20,14 +20,46 @@
         
         <div id = "poemBack">
             <!-- 임시 3개 --> 
-            <div class = "sliders">
+            <div class = "sliders" id="myCover">
                 <h1>내 정보</h1>
-                <img src = "../imgs/userImg3.png" class = "backImg">
-                <div id = "poemPart">
-                    <h2 id = "author"></h2>
-                    <h2 id = "authorEmail"></h2>
-                    <h2 id = "poemsCnt"></h2>
-                    <h2 id = "booksCnt"></h2>
+                <div id = "profile"></div>
+                
+                <label for = "changeProfile">
+                    <img src = "../imgs/change.png" id = "changePic">
+                    <input type = "file" accept="image/*" id = "changeProfile" style = "display:none;">
+                </label>
+                
+                
+                <div class = "infos" id = "oneIntro">
+                    한 줄 소개 : 
+                    <span contenteditable="false" id = "content">
+                        한 문장으로 자신을 표현하세요
+                    </span>
+                    <img src = "../imgs/change.png" id = "changeImg">
+                </div>
+                <div class = "infos" id = "id">
+                    아이디 : 
+                    <span>
+                        
+                    </span>
+                </div>
+                <div class = "infos" id = "nickname">
+                    필명 : 
+                    <span>
+                        
+                    </span>
+                </div>
+                <div class = "infos" id = "poemNum">
+                    작성한 시 수 : 
+                    <span>
+                        
+                    </span>
+                </div>
+                <div class = "infos" id = "bookNum">
+                    제작한 시집 수 : 
+                    <span>
+                        
+                    </span>
                 </div>
             </div>
         </div>

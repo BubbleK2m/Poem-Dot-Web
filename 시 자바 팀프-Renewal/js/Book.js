@@ -1,4 +1,4 @@
-let bookCover = document.getElementById('poemBack');
+let bookCover = document.getElementById("poemBack");
 
 function readBook(id, callback) {
     let xhr = new XMLHttpRequest();
@@ -14,7 +14,7 @@ function readBook(id, callback) {
         }
     };
 
-    xhr.open('GET', `http://52.43.254.152/book/${id}`, true);
+    xhr.open("GET", `http://52.43.254.152/book/${id}`, true);
     xhr.send(null);
 }
 
@@ -33,8 +33,8 @@ function readHeartAtBook(id, callback) {
         }
     };
 
-    xhr.open('GET', `http://52.43.254.152/book/${id}/heart`, true);
-    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+    xhr.open("GET", `http://52.43.254.152/book/${id}/heart`, true);
+    xhr.setRequestHeader("Poem-Session-Key", localStorage.getItem("Poem-Session-Key"));
 
     xhr.send(null);
 }
@@ -52,10 +52,10 @@ function updateHeartAtBook(id, heart, callback) {
         }
     };
 
-    xhr.open('PUT', `http://52.43.254.152/book/${id}/heart`, true);
+    xhr.open("PUT", `http://52.43.254.152/book/${id}/heart`, true);
 
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.setRequestHeader('Poem-Session-Key', localStorage.getItem('Poem-Session-Key'));
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Poem-Session-Key", localStorage.getItem("Poem-Session-Key"));
 
     xhr.send(`heart=${heart}`);
 }
@@ -74,32 +74,70 @@ function readPoemsAtBook(id, callback) {
         }
     };
 
-    xhr.open('GET', `http://52.43.254.152/book/${id}/poems`, true);
+    xhr.open("GET", `http://52.43.254.152/book/${id}/poems`, true);
     xhr.send(null);
 }
 
-let bookElement = bookCover.querySelector('#poemCover');
+function createReportAtBook(id, callback) {
+    let xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+    
+    xhr.open("POST", `http://52.43.254.152/book/${id}/report`, true);
+    xhr.setRequestHeader("Poem-Session-Key", localStorage.getItem("Poem-Session-Key"));
+    
+    xhr.send(null); 
+}
+
+function readReportAtBook(id, callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 204) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        }
+    };
+
+    xhr.open("GET", `http://52.43.254.152/book/${id}/report`, true);
+    xhr.setRequestHeader("Poem-Session-Key", localStorage.getItem("Poem-Session-Key"));
+
+    xhr.send(null);
+}
+
+let bookElement = bookCover.querySelector("#poemCover");
 
 const showBook = (id) => {
     readBook(id, (result, book) => {
         if (result) {  
-            let bookTitle = bookElement.querySelector('#title');
+            let bookTitle = bookElement.querySelector("#title");
             bookTitle.innerText = book.title;
 
-            let bookImage = bookElement.querySelector('.backImg');
-            bookImage.setAttribute('src', `http://52.43.254.152/book/${id}/image`);
+            let bookImage = bookElement.querySelector(".backImg");
+            bookImage.setAttribute("src", `http://52.43.254.152/book/${id}/image`);
 
-            let bookAuthor = bookElement.querySelector('#author');
+            let bookAuthor = bookElement.querySelector("#author");
             bookAuthor.innerText = book.writer;
 
-            let bookExplain = bookElement.querySelector('#explain');
+            let bookExplain = bookElement.querySelector("#explain");
             bookExplain.innerText = `${book.writer} 의 시집입니다`;
 
-            let bookHearts = bookElement.querySelector('#thumbCnt');
+            let bookHearts = bookElement.querySelector("#thumbCnt");
             bookHearts.innerText = book.hearts;
         } else {
-            alert('시집을 조회할 수 없음');
-            location.href = './MainPage.html';
+            alert("시집을 조회할 수 없음");
+            location.href = "./MainPage.html";
         }
     });
 }
@@ -107,12 +145,12 @@ const showBook = (id) => {
 const showHeartAtBook = (id) => {
     readHeartAtBook(id, (result, heart) => {
         if (result) {
-            let heartBtn = document.getElementById('thumbUp');
+            let heartBtn = document.getElementById("thumbUp");
 
             if (heart) {
-                heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+                heartBtn.setAttribute("src", `../imgs/clickLike.png`);
             } else {
-                heartBtn.setAttribute('src', `../imgs/like.png`);
+                heartBtn.setAttribute("src", `../imgs/like.png`);
             }
 
             heartBtn.onclick = (e) => {
@@ -125,12 +163,12 @@ const showHeartAtBook = (id) => {
 const editHeartAtBook = (id, heart) => {
     updateHeartAtBook(id, heart, (result) => {
         if (result) {
-            let heartBtn = document.getElementById('thumbUp');
+            let heartBtn = document.getElementById("thumbUp");
 
             if (heart) {
-                heartBtn.setAttribute('src', `../imgs/clickLike.png`);
+                heartBtn.setAttribute("src", `../imgs/clickLike.png`);
             } else {
-                heartBtn.setAttribute('src', `../imgs/like.png`);
+                heartBtn.setAttribute("src", `../imgs/like.png`);
             }
 
             showBook(id);
@@ -142,14 +180,49 @@ const editHeartAtBook = (id, heart) => {
     });
 }
 
-let poemsCover = document.getElementById('poemsBack');
+const addReportAtBook = (id) => {
+    createReportAtBook(id, (result) => {
+        let reportBtn = document.getElementById("report");
+        let reportText = document.getElementById("reportText");
+
+        if (result) {
+            reportText.innerText = "성공적으로 신고되었습니다.";
+            reportBtn.setAttribute("src", `../imgs/report.png`);
+            reportBtn.onclick = null;
+        } else {
+            reportText.innerText = "신고에 실패하였습니다.";
+        }
+    });
+};
+
+const showReportAtBook = (id) => {
+    readReportAtBook(id, (result) => {
+        let reportBtn = document.getElementById("report");
+
+        if (result) {
+            reportBtn.setAttribute("src", `../imgs/siren.png`);
+            reportBtn.onclick = (e) => {
+                alert("허위신고 시 불이익이 주어질 수 있습니다.");
+                
+                if (confirm("해당 시집을 신고하시겠습니까?")) {
+                    addReportAtBook(id);
+                }
+            };
+        } else {
+            reportBtn.setAttribute("src", `../imgs/report.png`);
+            reportBtn.onclick = null;
+        }
+    });
+}
+
+let poemsCover = document.getElementById("poemsBack");
 
 const showPoemsAtBook = (id) => {
     readPoemsAtBook(id, (result, poems) => {
         if (result) {
             for (let poem of poems) {
-                let poemElement = document.createElement('div');
-                poemElement.setAttribute('class', 'poemsCover');
+                let poemElement = document.createElement("div");
+                poemElement.setAttribute("class", "poemsCover");
 
                 let pictureNum = poem.id % 5 === 0 ? 5 : poem.id % 5;
 
@@ -166,54 +239,55 @@ const showPoemsAtBook = (id) => {
 
                 poemElement.onclick = (((poem) => {
                     return (e) => {
-                        localStorage.setItem('Poem-Poem-Id', poem.id);
-                        location.href = './Poem.html';
+                        localStorage.setItem("Poem-Poem-Id", poem.id);
+                        location.href = "./Poem.html";
                     };
                 })(poem));
 
                 poemsCover.appendChild(poemElement);
             }
         } else {
-            alert('시를 조회할 수 없음');
-            location.href = './MainPage.html';
+            alert("시를 조회할 수 없음");
+            location.href = "./MainPage.html";
         }
     });
 }
 
-document.getElementById('mainLogo').onclick = (e) => {
-    location.href = './MainPage.html';
+document.getElementById("mainLogo").onclick = (e) => {
+    location.href = "./MainPage.html";
 }
 
-document.getElementById('mainPageLnk').onclick = (e) => {
-    location.href = './MainPage.html';
+document.getElementById("mainPageLnk").onclick = (e) => {
+    location.href = "./MainPage.html";
 };
 
-document.getElementById('myPageLnk').onclick = (e) => {
-    location.href = './MyPage.html';
+document.getElementById("myPageLnk").onclick = (e) => {
+    location.href = "./MyPage.html";
 };
 
-document.getElementById('logoutLnk').onclick = (e) => {
-    if (localStorage.getItem('Poem-Session-Key')) {
-        localStorage.setItem('Poem-Session-Key', '');
+document.getElementById("logoutLnk").onclick = (e) => {
+    if (localStorage.getItem("Poem-Session-Key")) {
+        localStorage.setItem("Poem-Session-Key", "");
     }
 
-    location.href = './Landing.html';
+    location.href = "./Landing.html";
 };
 
-document.getElementById('searchBtn').onclick = (e) => {
-    let word = document.getElementById('searchText').value;
+document.getElementById("searchBtn").onclick = (e) => {
+    let word = document.getElementById("searchText").value;
 
     if (word) {
-        localStorage.setItem('Poem-Search-Word', word);
-        location.href = './Search.html';
+        localStorage.setItem("Poem-Search-Word", word);
+        location.href = "./Search.html";
     } else {
-        alert('검색어를 입력하세요');
+        alert("검색어를 입력하세요");
     }
 };
 
-showBook(localStorage.getItem('Poem-Book-Id'));
-showHeartAtBook(localStorage.getItem('Poem-Book-Id'));
-showPoemsAtBook(localStorage.getItem('Poem-Book-Id'));
+showBook(localStorage.getItem("Poem-Book-Id"));
+showHeartAtBook(localStorage.getItem("Poem-Book-Id"));
+showReportAtBook(localStorage.getItem("Poem-Book-Id"));
+showPoemsAtBook(localStorage.getItem("Poem-Book-Id"));
 
 
 

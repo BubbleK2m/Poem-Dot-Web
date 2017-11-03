@@ -167,8 +167,50 @@ h2#author {
     margin: 0 auto;
 }
 
+.sliders #profile{
+    width:8rem !important;
+    height:8rem !important;
+    display:block;
+    margin:0 auto;
+    border-radius: 100%;
+    margin-top:1rem;
+    border:1px solid darkgray;
+    
+    background-size:cover;
+}
+
+.sliders .infos{
+    color:white;
+    letter-spacing: 0.2px;
+    padding-left:7rem;
+    margin-top:1rem;
+}
+
+.sliders .infos span{
+    padding-left:1rem;
+}
+
+.sliders #oneIntro img{
+    width:17px;
+    margin-left:1rem;
+    cursor:pointer;
+}
+
+.sliders #changePic{
+    position:absolute;
+    margin-left:20.5rem;
+    margin-top:-1.5rem;
+    width:20px;
+    cursor:pointer;
+}
 
 /**/
+
+#profile img{
+    width:100%;
+    height:100%;
+    border-radius: 100%;
+}
 
 h1 {
     color: #404040;
